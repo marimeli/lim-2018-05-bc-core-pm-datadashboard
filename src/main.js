@@ -17,5 +17,5 @@ getJSON('../data/cohorts.json', (err, json) => {
         selectElement.appendChild(optionsElements);
         // console.log(cohorts[i].id);
     }
-
+    
 });

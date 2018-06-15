@@ -12,7 +12,7 @@ const getJSON = (url, callback) => {
             }
         }
     };
-
+    
     xhr.open('GET', url);
     xhr.send();
 };
