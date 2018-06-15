@@ -1,21 +1,21 @@
-const selectElement = document.getElementById('sedes');
+const selectElement = document.getElementById('cohorts');
 
 getJSON('../data/cohorts.json', (err, json) => {
-  if (err) {
-    // algo salió mal...
-    return console.error(err);
-  }
+    if (err) {
+        // algo salió mal...
+        return console.error(err);
+    }
 
-  const sedes = json;
-  console.log(sedes);
-  console.log(sedes.length);
+    const cohorts = json;
+    console.log(cohorts);
+    console.log(cohorts.length);
 
-  for (let i = 0; i < sedes.length; i++) {
-    const optionsElements = document.createElement('option');
-    const contenidoOptions = document.createTextNode(sedes[i].id);
-    optionsElements.appendChild(contenidoOptions);
-    selectElement.appendChild(optionsElements);
-    // console.log(sedes[i].id);
-  }
+    for (let i = 0; i < cohorts.length; i++) {
+        const optionsElements = document.createElement('option');
+        const contenidoOptions = document.createTextNode(cohorts[i].id);
+        optionsElements.appendChild(contenidoOptions);
+        selectElement.appendChild(optionsElements);
+        // console.log(cohorts[i].id);
+    }
 
 });
