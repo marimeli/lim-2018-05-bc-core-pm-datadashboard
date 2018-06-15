@@ -1,44 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Data Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <p>LABORATORIA</p>
+  <head>
+    <meta charset="utf-8">
+    <title>Data Dashboard</title>
+    <link rel="stylesheet" href="loginstyle.css" />
+  </head>
+  <body>
+    <div class="loginBox" id="loginBox">
+      <div id="title">
+        <img src="images/logo.png" class="user">
+      </div>
+      <form>
+        <p>Correo electrónico</p>
+        <input type="text" name="" placeholder="ale.ramirez@laboratoria.la">
+        <p>Contraseña</p>
+        <input type="password" name="" placeholder="********">
+        <a class="Sign" id="Sign" href="index.html"> SIGN IN </a>
+        <a href="#"> Restablecer contraseña </a>
+      </form>
     </div>
-  </header>
-  <div class="filters" id="filters">
-    <div class="left-column">
-      <div class="items">
-        <h3>
-          <span>ELEGIR SEDE</span>
-          <!--<select id="sedes"></select>-->
-        </h3>
-      </div>
-      <div class="items">
-        <h3>
-          <span>ELEGIR COHORT</span>
-          <select id="cohorts"></select>
-        </h3>
-      </div>
-      <div class="items">
-        <h3>
-          <span>GLOBAL</span>
-        </h3>
-      </div>
-      <div class="items">
-        <h3>
-          <span>ALUMNAS</span>
-        </h3>
+    <div id="hidden">
+      <div class="main">
       </div>
     </div>
-  </div>
-  <script src="data.js"></script>
-  <script src="main.js"></script>
-</body>
+    </div>
+    <script src="main.js"></script>
+  </body>
 </html>
 
