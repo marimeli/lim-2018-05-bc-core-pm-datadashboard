@@ -44,16 +44,36 @@ En esta fase usamos los datos coleccionados en la fase de descubrimiento e inves
 
 En esta fas imaginamos como sería nuestro producto ideal. Para ello, cada integrante elaboró un sketch, y luego lo explicó a su compañera. A través de feedbacks, se implementó un sketch que integraba ambas ideas. Las herramientas que se utilizaron fueron: lápiz, papel y borrador. Luego se presentó el Sketch  a algunos usuarios con la finalidad de poder realizar mejoras.
 
-De las presentaciones, se llegó a las siguientes conclusiones:
-- Un botón de registro resulta innecesario ya que no es una plataforma que cualquier persona pueda  acceder.
-- Poner botones en la parte de arriba y en el costado resulta confuso para el usuario 
-- Se requiere gráficas generales de completitud del cohort.
+Entrevista a Alejandra:
+
+Hola, Ale. Cuentanos un poco de tu labor como training manager en Laboratoria.
+1. ¿Cómo haces para poder estar pendiente del progreso de cada estudiante? Es decir, son muchas, debe ser un poco difícil seguirlas a todas.
+2. ¿Podrías contarnos cuándo revisas esta información?
+3. ¿Cual es la información que buscas más? Es decir, ¿qué información es la más relevante que consideres debes ver primero?
+4. ¿Qué otros aspectos te interesa ver al evaluar el progreso?
+5. ¿Qué tipo de visualización crees que te ayudaría a evaluar? (Ejemplo: gráficos, tablas, etc)
+6. ¿Podias contarnos masomeos cómo utilizas la información de progreso?
+
+De la entrevista, se llegó a las siguientes conclusiones:
+- La labor de una training manager va más allá de revisar la información acerca del progreso de cada estudiante ya que también es parte de su
+  proceso de aprendizaje, además de esto expone estos avances a la City Director de Laboratoria. Dado esto, emplea mucho de su tiempo extrayendo la información de una plataforma poco dinámica para luego elaborar sus informes. Además se encarga de llevar a cabo las ceremonias, coordinar con producto y apoyar en el diseño de los productos.
+- Actualmente Laboratoria no dispone con una data dashboard. La plataforma que utilizan, la considera rudimentaria ya que tiene muchas pestañas y 
+  además presenta la data de forma poco gráfica.
+- Le gustaría poder visualizar por alumna y también por cohort el avance y/o resultados por unidad de cada curso.
+- Normalmente revisa el nivel de progreso al final de cada proyecto.
+- Lo más importante a revisar eran los ejercicios. 
+
 
 #### 4) PROTOTIPADO
 
 Luego de haber realizado mejoras al sketch, elaboramos un prototipo que nos permita probar nuestras ideas con usuarios para saber si estamos satisfaciendo sus necesidades con nuestro producto.
 
 Se realizó un prototipado de baja fidelidad, y como principal herramienta utilizamos Figma.
+
+De las presentaciones, se llegó a las siguientes conclusiones:
+- Un botón de registro resulta innecesario ya que no es una plataforma que cualquier persona pueda  acceder.
+- Tener filtros en la parte del header y en el desplegable resulta confuso. 
+- Se requiere gráficas generales de completitud del cohort.
 
 
 #### 5) TESTEO CON USUARIOS
