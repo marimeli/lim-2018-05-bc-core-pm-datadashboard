@@ -32,17 +32,38 @@ El proceso de diseño comprende 5 fases, las cuales permiten crear un producto c
 
 #### 1) DESCUBRIMIENTO E INVESTIGACIÓN
 
+![etapa1](src/images/e1.jpg)
 En esta etapa identificamos quiénes serían nuestros usuarios, cuáles son sus necesidades y objetivos. Además, buscamos información sobre cómo diseñar un producto, y tableros de visualización como referencia para construir el que mejor se adecuaba a nuestros usuarios. 
 Sin embargo, la parte más importante fue investigar y entender la labor que desempeñan los training mánager en Laboratoria, y el problema existente. Para esto, empleamos las siguientes técnicas: 
 -Entrevistas con usuarios
 -Búsquedas en la web
 
 #### 2) SÍNTESIS Y DEFINICIÓN
+
+![etapa2](src/images/e2.jpg)
 En esta fase usamos los datos coleccionados en la fase de descubrimiento e investigación buscando tendencias valiosas para el desarrollo del producto, y entendemos los deseos y necesidades de nuestros usuarios.
+
+![flujograma](src/images/flujograma.jpeg)
 
 #### 3) IDEACIÓN
 
-En esta fas imaginamos como sería nuestro producto ideal. Para ello, cada integrante elaboró un sketch, y luego lo explicó a su compañera. A través de feedbacks, se implementó un sketch que integraba ambas ideas. Las herramientas que se utilizaron fueron: lápiz, papel y borrador. Luego se presentó el Sketch  a algunos usuarios con la finalidad de poder realizar mejoras.
+![etapa3](src/images/e3.jpg)
+En esta fase imaginamos como sería nuestro producto ideal. Para ello, cada integrante elaboró un sketch, y luego lo explicó a su compañera. A través de feedbacks, se implementó un sketch que integraba ambas ideas. Las herramientas que se utilizaron fueron: lápiz, papel y borrador. Luego se presentó el Sketch  a algunos usuarios con la finalidad de poder realizar mejoras.
+
+![sketch1](src/images/1.jpeg)
+
+![sketch2](src/images/2.jpeg)
+
+![sketch3](src/images/3.jpeg)
+
+![sketch4](src/images/4.jpeg)
+
+![sketch5](src/images/5.jpeg)
+
+![sketch6](src/images/6.jpeg)
+
+![sketch7](src/images/7.jpeg)
+
 
 Entrevista a Alejandra:
 
@@ -66,6 +87,7 @@ De la entrevista, se llegó a las siguientes conclusiones:
 
 #### 4) PROTOTIPADO
 
+![etapa4](src/images/e4.jpg)
 Luego de haber realizado mejoras al sketch, elaboramos un prototipo que nos permita probar nuestras ideas con usuarios para saber si estamos satisfaciendo sus necesidades con nuestro producto.
 
 Se realizó un prototipado de baja fidelidad, y como principal herramienta utilizamos Figma.
@@ -78,4 +100,5 @@ De las presentaciones, se llegó a las siguientes conclusiones:
 
 #### 5) TESTEO CON USUARIOS
 
+![etapa5](src/images/e5.jpg)
 En esta etapa probamos nuestro prototipo con usuarios para obtener su feedback.
