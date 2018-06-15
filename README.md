@@ -6,15 +6,15 @@ Se identificó a los Training Manager (TM) de Laboratoria como principales usuar
 
 ## Objetivos del usuario en relación al producto
 
-•	Identificar cómo va cada estudiante en su proceso de aprendizaje. 
-•	Visualizar estadísticamente el grado de completitud del Learning Management System (LMS) y en base a eso tener un mejor entendimiento del progreso de cada estudiante.
++	Identificar cómo va cada estudiante en su proceso de aprendizaje. 
++	Visualizar estadísticamente el grado de completitud del Learning Management System (LMS) y en base a eso tener un mejor entendimiento del progreso de cada estudiante.
 
 ## Datos más relevantes de la interfaz 
 
 La necesidad principal del usuario es conocer el avance de cada estudiante, por lo tanto los datos más relevantes que desea ver en la interfaz son las estadísticas de:
-•	Los ejercicios 
-•	Las lecturas 
-•	Los  quizzes
++	Los ejercicios 
++	Las lecturas 
++	Los  quizzes
 
 Esta información le permitirá al usuario saber en qué medida las estudiantes están completando los contenidos de aprendizaje, además de conocer los resultados de las evaluaciones (quizzes). De esta forma, podrá analizar el nivel de progreso de cada persona, así como tomar decisiones más acertadas y rápidas. Se llegó a estas conclusiones por las entrevistas generadas a los principales usuarios.
 
@@ -28,11 +28,12 @@ Este producto resuelve sus problemas ya que actualmente solo disponen de archivo
 
 ## El proceso de diseño
 
-El proceso de diseño comprende 5 fases, las cuales permiten crear un producto centrado en el usuario, y que permita  satisfacer sus necesidades. Para ello,  empezamos entendiendo al usuario en la primera fase y lo seguimos involucrando a lo largo del proceso para ir validando nuestras propuestas.
+El proceso de diseño comprende 5 fases, las cuales permiten crear un producto centrado en el usuario, y que permita  satisfacer sus necesidades. Para ello, empezamos entendiendo al usuario en la primera fase y lo seguimos involucrando a lo largo del proceso para ir validando nuestras propuestas.
 
 #### 1) DESCUBRIMIENTO E INVESTIGACIÓN
 
 ![etapa1](src/images/e1.jpg)
+
 En esta etapa identificamos quiénes serían nuestros usuarios, cuáles son sus necesidades y objetivos. Además, buscamos información sobre cómo diseñar un producto, y tableros de visualización como referencia para construir el que mejor se adecuaba a nuestros usuarios. 
 Sin embargo, la parte más importante fue investigar y entender la labor que desempeñan los training mánager en Laboratoria, y el problema existente. Para esto, empleamos las siguientes técnicas: 
 -Entrevistas con usuarios
@@ -41,13 +42,17 @@ Sin embargo, la parte más importante fue investigar y entender la labor que des
 #### 2) SÍNTESIS Y DEFINICIÓN
 
 ![etapa2](src/images/e2.jpg)
+
 En esta fase usamos los datos coleccionados en la fase de descubrimiento e investigación buscando tendencias valiosas para el desarrollo del producto, y entendemos los deseos y necesidades de nuestros usuarios.
+
+Para comprender las necesidades de los Training Manager elaboramos un flujograma con la información más relevenate que ellos desean ver en un data dashboard.
 
 ![flujograma](src/images/flujograma.jpeg)
 
 #### 3) IDEACIÓN
 
 ![etapa3](src/images/e3.jpg)
+
 En esta fase imaginamos como sería nuestro producto ideal. Para ello, cada integrante elaboró un sketch, y luego lo explicó a su compañera. A través de feedbacks, se implementó un sketch que integraba ambas ideas. Las herramientas que se utilizaron fueron: lápiz, papel y borrador. 
 
 ![sketch1](src/images/1.jpeg)
@@ -64,7 +69,7 @@ En esta fase imaginamos como sería nuestro producto ideal. Para ello, cada inte
 
 ![sketch7](src/images/7.jpeg)
 
-Luego se presentó el Sketch  a algunos usuarios con la finalidad de poder realizar mejoras.
+Luego se presentó el Sketch a algunos usuarios con la finalidad de poder realizar mejoras.
 
 ### Entrevista a Alejandra:
 
