@@ -10,7 +10,12 @@ body {
 header {
     width: 100%;
     height: 110px;
+<<<<<<< HEAD
     background: #F2C94C;   
+=======
+    background: #F2C94C;
+    
+>>>>>>> 7cd0da195bb24127d65410e409251cdf7c4a5d1e
 }
 
 .logo {
@@ -33,6 +38,16 @@ p{
     background: #E5E5E5;
 }
 
+<<<<<<< HEAD
+=======
+
+@font-face{
+    font-family: bitter;
+    src: url(fonts/Bitter-Regular.ttf);
+
+}
+
+>>>>>>> 7cd0da195bb24127d65410e409251cdf7c4a5d1e
 h3 {
 	color: rgba(0, 0, 0, 0.87);
 	font-size: 1rem;
@@ -78,9 +93,12 @@ h3 {
 	text-decoration: none;
 	width: 320px;
 	background-color: rgba(0, 0, 0, 0.08);
+<<<<<<< HEAD
 }
 
 @font-face{
     font-family: bitter;
     src: url(fonts/Bitter-Regular.ttf);
+=======
+>>>>>>> 7cd0da195bb24127d65410e409251cdf7c4a5d1e
 }
