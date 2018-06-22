@@ -1,3 +1,23 @@
+
+window.processCohortData = (options) => {
+
+};
+
+
+
+window.computeUsersStats = (users, progress, courses) => {
+   
+};
+
+window.sortUsers = (users, orderBy, orderDirection) => {
+
+};
+
+window.filterUsers = (users, search) => {
+
+};
+  
+
 const getJSON = (url, callback) => {
     const xhr = new XMLHttpRequest();
     xhr.onload = _ => {
@@ -16,3 +36,6 @@ const getJSON = (url, callback) => {
     xhr.open('GET', url);
     xhr.send();
 };
+
+
+
