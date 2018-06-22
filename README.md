@@ -1,15 +1,29 @@
-#  Definición del producto
+# Data Dashboard
 
-## Principales usuarios del producto
+> El presente documento detalla todo el proceso de elaboración del proyecto Data Dashboard. Se divide en 3 etapas: Planificación , el proceso de diseño y la implementación del producto. A continuación se explica cómo fue cada etapa. 
+
+## Planificación 
+La fase de planeación, está compuesta por 3 **Sprint Plan**, los cuales se llevaron a cabo durante tres semanas. Durante el primer sprint plan, se desarrolló un **Product Backlog**, donde se identificaron las tareas épicas y la definición de terminado. Esta organización fue por squads. Las tareas a desarrollar durante cada épica se definió en parejas. Utilizando la metodología ágil de *Pair Programming*, utilizamos *Trello* como principal herramienta de organización.
+
+![sprint planning](src/images/sprint1.jpg)
+![trello planning](src/images/sprint2.jpg)
+
+Durante el segundo sprint plan, se desarrolló un nuevo Product Backlog, en el cual se definió nuevas tareas épicas.
+![sprint planning](src/images/sprint1.jpg)
+![trello planning](src/images/trello2.jpg)
+
+Durante esta fase, se respondieron algunas preguntas para poder definir el producto.
+
+### Principales usuarios del producto
 
 Se identificó a los Training Manager (TM) de Laboratoria como principales usuarios, además de coaches, instructores, y personas en general que necesiten conocer el avance de un determinado cohort.
 
-## Objetivos del usuario en relación al producto
+### Objetivos del usuario en relación al producto
 
 +	Identificar cómo va cada estudiante en su proceso de aprendizaje. 
 +	Visualizar estadísticamente el grado de completitud del Learning Management System (LMS) y en base a eso tener un mejor entendimiento del progreso de cada estudiante.
 
-## Datos más relevantes de la interfaz 
+### Datos más relevantes de la interfaz 
 
 La necesidad principal del usuario es conocer el avance de cada estudiante, por lo tanto los datos más relevantes que desea ver en la interfaz son las estadísticas de:
 +	Los ejercicios 
@@ -18,11 +32,11 @@ La necesidad principal del usuario es conocer el avance de cada estudiante, por 
 
 Esta información le permitirá al usuario saber en qué medida las estudiantes están completando los contenidos de aprendizaje, además de conocer los resultados de las evaluaciones (quizzes). De esta forma, podrá analizar el nivel de progreso de cada persona, así como tomar decisiones más acertadas y rápidas. Se llegó a estas conclusiones por las entrevistas generadas a los principales usuarios.
 
-##  Principal momento de revisar el producto
+###  Principal momento de revisar el producto
 
 Se determinó que los datos son revisados por los usuarios al finalizar cada proyecto.
 
-## Solución del producto a sus problemas
+### Solución del producto a sus problemas
 
 Este producto resuelve sus problemas ya que actualmente solo disponen de archivos Excel para ver el progreso de las alumnas. Con la creación de un dashboard, el usuario tendrá la información mejor organizada, mediante una interfaz que le permitirá tener una  visualización clara, ordenada y específica, además de gráficos fáciles de interpretar. Por otro lado, podrá ordenar el nivel de completitud de forma ascendente o descendente.También le permite optimizar el tiempo ya que se hace uso de las nuevas tecnologías para agilizar un proceso que podría tomar muchas horas si se hace manualmente. Un ejemplo de esto, sería buscar información precisa utilizando los filtros de búsqueda.
 
@@ -124,3 +138,7 @@ En este caso, realizamos un prototipado de baja fidelidad, y como principal herr
 ![etapa5](src/images/e5.jpg)
 
 En esta etapa probamos nuestro prototipo con usuarios para obtener su feedback.
+
+## Implementación del producto
+
+Para la elaboración del producto se utilizaron las siguientes herramientas: HTML, CSS, Javascript. Para los test, se empleó Node JS. 
