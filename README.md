@@ -72,17 +72,17 @@ En esta fase imaginamos como sería nuestro producto ideal. Para ello, cada inte
 
 ![sketch1](src/images/1.jpg)
 
-![sketch2](src/images/2.jpg)
+![sketch2](src/images/2.JPG)
 
 ![sketch3](src/images/3.jpg)
 
 ![sketch4](src/images/4.jpg)
 
-![sketch5](src/images/5.jpg)
+![sketch5](src/images/5.JPG)
 
 ![sketch6](src/images/6.jpg)
 
-![sketch7](src/images/7.jpg)
+![sketch7](src/images/7.JPG)
 
 Luego se presentó el Sketch a algunos usuarios con la finalidad de poder realizar mejoras.
 
