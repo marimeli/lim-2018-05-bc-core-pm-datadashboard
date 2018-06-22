@@ -1,5 +1,12 @@
 const selectElement = document.getElementById('cohorts');
 const selectUsers= document.getElementById('users');
+const buttonGlobal = document.getElementById('global');
+
+buttonGlobal.addEventListener('click', () => {
+    document.getElementById('main').style.display="block";
+    document.getElementById("filters").style.display = "none";
+});
+
 
 getJSON('../data/cohorts.json', (err, json) => {
     if (err) {
