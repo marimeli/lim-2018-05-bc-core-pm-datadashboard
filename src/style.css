@@ -27,7 +27,8 @@ p{
     padding-top: 30px;
 }
 
-.filters{
+.filters {
+	display:block;
     height: 700px;
     width: 32%;
     background: #E5E5E5;
@@ -84,3 +85,34 @@ h3 {
     font-family: bitter;
     src: url(fonts/Bitter-Regular.ttf);
 }
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+table {     
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;    
+	margin: 45px;     
+	width: 480px; text-align: left;    
+	border-collapse: collapse; }
+
+th {     
+	font-size: 13px;     
+	font-weight: normal;     
+	padding: 8px;     
+	background: gray;
+	border-top: 4px solid gray;    
+	border-bottom: 1px solid #fff; 
+	color: #F2C94C; }
+
+td {    
+	padding: 8px;     
+	background: #e8edff;     
+	border-bottom: 1px solid #fff;
+	color: gray;    
+	border-top: 1px solid transparent; }
+
+tr:hover td { 
+	background: gray; 
+	color: #F2C94C; }
