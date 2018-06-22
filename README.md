@@ -5,12 +5,13 @@
 ## Planificación 
 La fase de planeación, está compuesta por 3 **Sprint Plan**, los cuales se llevaron a cabo durante tres semanas. Durante el primer sprint plan, se desarrolló un **Product Backlog**, donde se identificaron las tareas épicas y la definición de terminado. Esta organización fue por squads. Las tareas a desarrollar durante cada épica se definió en parejas. Utilizando la metodología ágil de *Pair Programming*, utilizamos *Trello* como principal herramienta de organización.
 
-![sprint planning](src/images/sprint1.jpg)
-![trello planning](src/images/sprint2.jpg)
+![sprint planning](src/images/sprint1.jpeg)
+![trello planning](src/images/trello1.jpg)
 
-Durante el segundo sprint plan, se desarrolló un nuevo Product Backlog, en el cual se definió nuevas tareas épicas.
-![sprint planning](src/images/sprint1.jpg)
-![trello planning](src/images/trello2.jpg)
+Durante el segundo sprint plan, se desarrolló un nuevo Product Backlog, en el cual se definió nuevas tareas épicas. La finalidad fue implementar una función que muestre el prpogreso de estudiantes en ejercicios.
+
+![sprint planning](src/images/sprint1.jpeg)
+
 
 Durante esta fase, se respondieron algunas preguntas para poder definir el producto.
 
