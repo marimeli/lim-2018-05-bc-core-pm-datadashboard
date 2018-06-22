@@ -17,7 +17,7 @@ const getJSON = (url, callback) => {
     xhr.send();
 };
 
-const processCohortData = (options) => {
+/* const processCohortData = (options) => {
     (cohort) => {
         let options = {
             cohort: {},
@@ -58,4 +58,4 @@ const computeUsersStats = (users, progress, courses) => {
             }
         },
     }
-};
+}; */
