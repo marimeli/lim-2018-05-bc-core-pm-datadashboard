@@ -46,3 +46,4 @@ getJSON('../data/cohorts/lim-2018-03-pre-core-pw/users.json', (err, json) => {
         console.log(users, usersProgress)
     });
 });
+
