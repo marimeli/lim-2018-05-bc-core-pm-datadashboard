@@ -1,94 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Data Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fontello.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <p>LABORATORIA</p>
-    </div>
+    <button id="button-menu">
+      <label for="menu-left" class="icon-menu">Laboratoria</label>
+    </button>
+    <nav id="content-menu" class="disabled menu">
+      <ul>
+        <li id="sedes" class="submenu">ELEGIR SEDE
+          <span class="icon-down-open"></span>
+          <ul id="items-sedes" class="hide items"></ul>   
+        </li>
+        <li id="cohorts" class="submenu">ELEGIR COHORT
+          <span class="icon-down-open"></span>
+          <ul id="items-cohorts" class="hide items">
+          </ul>
+        </li>
+        <li id="progress" class="submenu">GLOBAL</li>
+        <li id="users" class="submenu">ALUMNAS</li>
+      </ul>
+    </nav>
   </header>
-  <div class="filters" id="filters">
-    <div class="left-column">
-      <div class="items">
-        <h3>
-          <span>ELEGIR SEDE</span>
-          <br>
-          <select id="sedes">
-            <option selected value="O">Elegir sede</option>
-            <option value="1">Arequipa</option>
-            <option value="2">Lima</option>
-            <option value="3">Ciudad de México</option>
-            <option value="4">Santiago de Chile</option>
-          </select>
-          <!--<select id="sedes"></select>-->
-        </h3>
-      </div>
-      <div class="items">
-        <h3>
-          <span>ELEGIR COHORT</span>
-          <select id="cohorts"></select>
-        </h3>
-      </div>
-      <div class="items">
-        <h3>
-          <span>GLOBAL</span>
-          <button id="global">GLOBAL</button>
-        </h3>
-      </div>
-      <div class="items">
-        <h3>
-          <span>ALUMNAS</span>
-          <select id="users"></select>
-        </h3>
-      </div>
-    </div>
-  </div>
-  <div class="main" id="main">
-    <div class="right-column">
-      <div class="table">
-        <table>
-          <caption>Resultados globales del Cohort</caption>
-          <tr>
-            <th>Alumna</th>
-            <th>Student ID</th>
-            <th>Total </th>
-            <th>Completado</th>
-            <th>Porcentaje (%)</th>
-          </tr>
-          <tr>
-            <td>Lizeth</td>
-            <td>49</td>
-            <td>0.2</td>
-            <td>0.4</td>
-            <td>12.7</td>
-          </tr>
-          <tr>
-            <td>Devora Alexandra Miñano Vejarano</td>
-            <td>90</td>
-            <td>0.3</td>
-            <td>1.0</td>
-            <td>23.5</td>
-          </tr>
-          <tr>
-            <td>Monica Jimena</td>
-            <td>46</td>
-            <td>0.4</td>
-            <td>0.9</td>
-            <td>10.9</td>
-          </tr>
-          <tr>
-            <td>Vanessa</td>
-            <td>37</td>
-            <td>0.5</td>
-            <td>0.8</td>
-            <td>8.3</td>
-          </tr>
-        </table>
-        <script src="data.js"></script>
-        <script src="main.js"></script>
+  <main>
+    <h1>Bienvenida Ale</h1>
+    <p>Mira lo que está sucediendo en Lima.</p>
+  </main>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
