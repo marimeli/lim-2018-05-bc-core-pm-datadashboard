@@ -42,4 +42,10 @@ const computeUsersStats = (users, progress, courses) => {
             }
         },
     }
+<<<<<<< HEAD
 };
+=======
+}; */
+
+
+>>>>>>> 395bea8d3f32e45904fb4f300a59a838739b6132

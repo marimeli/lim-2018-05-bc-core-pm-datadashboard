@@ -70,19 +70,19 @@ Para comprender las necesidades de los Training Manager elaboramos un flujograma
 
 En esta fase imaginamos como sería nuestro producto ideal. Para ello, cada integrante elaboró un sketch, y luego lo explicó a su compañera. A través de feedbacks, se implementó un sketch que integraba ambas ideas. Las herramientas que se utilizaron fueron: lápiz, papel y borrador. 
 
-![sketch1](src/images/1.jpeg)
+![sketch1](src/images/1.jpg)
 
-![sketch2](src/images/2.jpeg)
+![sketch2](src/images/2.JPG)
 
-![sketch3](src/images/3.jpeg)
+![sketch3](src/images/3.jpg)
 
-![sketch4](src/images/4.jpeg)
+![sketch4](src/images/4.jpg)
 
-![sketch5](src/images/5.jpeg)
+![sketch5](src/images/5.JPG)
 
-![sketch6](src/images/6.jpeg)
+![sketch6](src/images/6.jpg)
 
-![sketch7](src/images/7.jpeg)
+![sketch7](src/images/7.JPG)
 
 Luego se presentó el Sketch a algunos usuarios con la finalidad de poder realizar mejoras.
 

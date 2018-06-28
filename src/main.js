@@ -63,6 +63,7 @@ const getJson = () => {
     .catch((err) => {
       console.error("Error happened" + err);
     });
+<<<<<<< HEAD
 }
 
 //Función para traer data de los cohorts
@@ -91,3 +92,7 @@ Promise.all([jsonCohort, jsonUser, jsonUserProgress])
   const userProgressData = data[2]
   console.log(data[0], data[1],data[2]);
   })
+=======
+});
+
+>>>>>>> 395bea8d3f32e45904fb4f300a59a838739b6132
