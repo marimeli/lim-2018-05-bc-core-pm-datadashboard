@@ -1,7 +1,4 @@
-//Creando un arreglo que contengan las sedes 
-//const sedesArr = ['Lima', 'Arequipa', 'México', 'Chile'];
-
-const processCohortData = (options) => {
+window.processCohortData = (options) => {
     (cohort) => {
         let options = {
             cohort: {},
@@ -18,7 +15,7 @@ const processCohortData = (options) => {
 },
 
 
-const computeUsersStats = (users, progress, courses) => {
+window.computeUsersStats = (users, progress, courses) => {
 
     let usersWithStats = (user) => {
         let stats = {
@@ -40,6 +37,6 @@ const computeUsersStats = (users, progress, courses) => {
                 scoreSum: 0,
                 scoreAvg: 0
             }
-        },
-    }
+        };
+    };
 };

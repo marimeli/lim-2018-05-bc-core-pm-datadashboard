@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,29 +8,52 @@
   <link rel="stylesheet" href="fontello.css">
 </head>
 <body>
-  <header>
-    <button id="button-menu">
-      <label for="menu-left" class="icon-menu">Laboratoria</label>
-    </button>
-    <nav id="content-menu" class="disabled menu">
-      <ul>
-        <li id="sedes" class="submenu">ELEGIR SEDE
-          <span class="icon-down-open"></span>
-          <ul id="items-sedes" class="hide items"></ul>   
-        </li>
-        <li id="cohorts" class="submenu">ELEGIR COHORT
-          <span class="icon-down-open"></span>
-          <ul id="items-cohorts" class="hide items">
-          </ul>
-        </li>
-        <li id="progress" class="submenu">GLOBAL</li>
-        <li id="users" class="submenu">ALUMNAS</li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <h1>Bienvenida Ale</h1>
-    <p>Mira lo que está sucediendo en Lima.</p>
+  <main id="container">
+    <header>
+      <button id="button-menu">
+        <label for="menu-left" class="icon-menu">Laboratoria</label>
+      </button>
+      <nav id="content-menu" class="disabled menu">
+        <ul>
+          <li id="sedes" class="submenu">
+            <span class="icon-globe-1"></span> SEDE
+            <span class="icon-down-open"></span>
+            <ul id="items-sedes" class="hide items"></ul>
+          </li>
+          <li id="cohorts" class="submenu">
+            <span class="icon-graduation-cap"></span> COHORT
+            <span class="icon-down-open"></span>
+            <ul id="items-cohorts" class="hide items"></ul>
+          </li>
+          <li id="progress" class="submenu">
+            <span class="icon-chart-line"></span> GLOBAL</li>
+          <li id="users" class="submenu">
+            <span class="icon-users"></span> ALUMNAS</li>
+        </ul>
+      </nav>
+    </header>
+    <section id="welcome">
+      <h1>Bienvenida Ale</h1>
+      <p>¿Cómo te sientes hoy?</p>
+    </section>
+    <section id="seatLima">
+        <h1>Laboratoria Lima</h1>
+        <p>Mira lo que está sucediendo en Lima.</p>
+        <img src="" alt=""></img>
+        <p>Dirección: Barranco</p>
+    </section>
+    <section id="lim-2018-03-pre-core-pw">
+        <h1>LIM PRE CORE 2018 PM</h1>
+        <img src="" alt=""></img>
+    </section>
+    <section id="progressCohortLim2018">
+        <h1>Progreso General Lim-Pre-Core-2018</h1>
+        <img src="" alt=""></img>
+    </section>
+    <section id="usersProgresLim2018">
+        <h1>Estudiantes Lim-Pre-Core-2018</h1>
+        <img src="name.jpg" alt=""></img>
+    </section>
   </main>
   <script src="data.js"></script>
   <script src="main.js"></script>
