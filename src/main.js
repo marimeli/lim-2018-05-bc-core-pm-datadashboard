@@ -1,5 +1,3 @@
-import { eventNames } from "cluster";
-
 //Llamando a los elmentos del HTML que se van a manipular
 const selectCohorts = document.getElementById('cohorts');
 const selectUsers = document.getElementById('users');
