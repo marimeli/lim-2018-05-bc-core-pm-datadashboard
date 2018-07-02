@@ -10,7 +10,11 @@ La fase de planeación, está compuesta por 3 **Sprint Plan**, los cuales se lle
 
 Durante el segundo sprint plan, se desarrolló un nuevo Product Backlog, en el cual se definió nuevas tareas épicas. La finalidad fue implementar una función que muestre el prpogreso de estudiantes en ejercicios.
 
-![sprint planning](src/images/sprint1.jpeg)
+![sprint planning](src/images/sprint2.jpeg)
+
+Durante el tercer sprint plan, se definió nuevas tareas épicas en el Product Backlog. Sin embargo, nos encontramos confusas al implementar Javascript. Por ello, nos propusimos leer y practicar los temas del LMS, ver videos relacionados, así como compartir lo entendido con nuestra partner. Pese a nuestros esfuerzos, solo se logró un pequeño avance respecto a la manipulación del DOM. También logramos hacer peticiones asíncronas con Fetch. El desarrollo de las funciones y la creación de eventos con el DOM, la colocamos como "Blocked", ya que nos estancamos en estos puntos, sin lograr nuevos avances.
+
+![sprint planning](src/images/sprint3.jpeg)
 
 
 Durante esta fase, se respondieron algunas preguntas para poder definir el producto.
@@ -70,6 +74,8 @@ Para comprender las necesidades de los Training Manager elaboramos un flujograma
 
 En esta fase imaginamos como sería nuestro producto ideal. Para ello, cada integrante elaboró un sketch, y luego lo explicó a su compañera. A través de feedbacks, se implementó un sketch que integraba ambas ideas. Las herramientas que se utilizaron fueron: lápiz, papel y borrador. 
 
+Como resultado, se obtuvo el siguiente prototipo de baja fidelidad:
+
 ![sketch1](src/images/1.jpg)
 
 ![sketch2](src/images/2.JPG)
@@ -101,7 +107,7 @@ De la entrevista, se llegó a las siguientes conclusiones:
 - Actualmente Laboratoria no dispone con una data dashboard. La plataforma que utilizan, la considera rudimentaria ya que tiene muchas      pestañas y además presenta la data de forma poco gráfica.
 - Le gustaría poder visualizar por alumna y también por cohort el avance y/o resultados por unidad de cada curso.
 - Normalmente revisa el nivel de progreso al final de cada proyecto.
-- Lo más importante a revisar eran los ejercicios. 
+- Lo más importante a revisar son los ejercicios. 
 
 
 #### 4) PROTOTIPADO
@@ -109,14 +115,14 @@ De la entrevista, se llegó a las siguientes conclusiones:
 ![etapa4](src/images/e4.jpg)
 
 De las presentaciones del sketch, se llegó a las siguientes conclusiones:
-- Un botón de registro resulta innecesario ya que no es una plataforma que cualquier persona pueda  acceder.
+- Un botón de registro resulta innecesario ya que no es una plataforma que cualquier persona pueda acceder.
 - Tener filtros en la parte del header y en el desplegable resulta confuso. 
 - Se requiere gráficas generales de completitud del cohort.
 
 
 Luego de hacer mejoras en el sketch en base al feedback de la entrevista, elaboramos un prototipo que nos permita probar nuestras ideas con usuarios para saber si estamos satisfaciendo sus necesidades con nuestro producto.
 
-En este caso, realizamos un prototipado de baja fidelidad, y como principal herramienta utilizamos Figma.
+En este caso, realizamos un prototipado de alta fidelidad, y como principal herramienta utilizamos Figma.
 
 ![prototipo2](src/images/login.jpg)
 
@@ -138,8 +144,8 @@ En este caso, realizamos un prototipado de baja fidelidad, y como principal herr
 
 ![etapa5](src/images/e5.jpg)
 
-En esta etapa probamos nuestro prototipo con usuarios para obtener su feedback.
+En esta etapa probaremos nuestro prototipo con usuarios para obtener su feedback.
 
 ## Implementación del producto
 
-Para la elaboración del producto se utilizaron las siguientes herramientas: HTML, CSS, Javascript. Para los test, se empleó Node JS. 
+Para la elaboración del producto se utilizaron las siguientes herramientas: HTML 5, CSS, Javascript. Para los test, se emplearemos Node JS. 
