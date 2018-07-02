@@ -1,13 +1,35 @@
 //Llamando a los elmentos del HTML que se van a manipular
 const selectCohorts = document.getElementById('cohorts');
 const selectUsers = document.getElementById('users');
-const buttonGlobal = document.getElementById('global');
+const showGlobal = document.getElementById('progress');
 const sedesArr = ['Arequipa', 'Lima', 'México', 'Chile'];
 const buttonMenu = document.getElementById('button-menu');
 const menu = document.getElementById('content-menu');
 const submenu = document.getElementsByClassName('submenu');
 const ulElement1 = document.getElementById('items-sedes');
 const ulElement2 = document.getElementById('items-cohorts');
+
+//Trayendo todos los archivos con su data
+let cohort = []
+let users = []
+let progress = []
+
+const jsonCohort = fetch('../data/cohorts.json')
+  .then(response => response.json())
+const jsonUser = fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
+  .then(response => response.json())
+const jsonUserProgress = fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
+  .then(response => response.json())
+Promise.all([jsonCohort, jsonUser, jsonUserProgress])
+  .then(data => {
+    cohort = data[0];
+    users = data[1]
+    progress = data[2]
+    //console.log(data[0], data[1], data[2]);
+  })
+  .catch((err) => {
+    console.error('Error happened' + err);
+  });
 
 //Creando función para mostrar y ocultar el menú contenedor
 const showMenu = () => {
@@ -37,28 +59,6 @@ function showSubMenu() {
   submenu[i].addEventListener('click', showSubMenu);
 };
 
-//Haciendo un promise all para traer todos los archivos
-let selectedCohortData = [];
-let usersData = []
-let userProgressData = []
-
-const jsonCohort = fetch('../data/cohorts.json')
-  .then(response => response.json())
-const jsonUser = fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
-  .then(response => response.json())
-const jsonUserProgress = fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
-  .then(response => response.json())
-Promise.all([jsonCohort, jsonUser, jsonUserProgress])
-  .then(data => {
-    selectedCohortData = data[0];
-    usersData = data[1]
-    userProgressData = data[2]
-    console.log(data[0], data[1], data[2]);
-  })
-  .catch((err) => {
-    console.error('Error happened' + err);
-  });
-
 //Creando nodos del DOM: Lista de sedes
 sedesArr.forEach((element, i) => {
   const listSedes = document.createElement("li");
@@ -72,18 +72,38 @@ sedesArr.forEach((element, i) => {
 
 //Función para traer la data de cohorts de Lima
 const cohortsLima = () => {
-  selectedCohortData.forEach((element, i) => {
+  cohort.forEach((element, i) => {
     const listCohorts = document.createElement('li');
-    if (selectedCohortData[i].id.substring(0, 3) === "lim") {
-      listCohorts.textContent = selectedCohortData[i].id;
-      listCohorts.id = selectedCohortData[i].id;
-      listCohorts.setAttribute("href", selectedCohortData[i].id);
+    if (cohort[i].id.substring(0, 3) === "lim") {
+      listCohorts.textContent = cohort[i].id;
+      listCohorts.id = cohort[i].id;
+      listCohorts.setAttribute("href", cohort[i].id);
       ulElement2.appendChild(listCohorts);
       listCohorts.addEventListener('click', (e) => {
-        console.log("entré a lima cohort 2018");
+        console.log(e.target);
+        /*         if (e.target.getAttribute("lim-2018-03-pre-core-pw")) {
+                  console.log("Hola Meli, entraste al cohort de lima 2018"); */
       })
     }
   });
 }
 selectCohorts.addEventListener('click', cohortsLima);
+
+showGlobal.addEventListener('click', () => {
+  //Creando objeto options y definiendo sus valores.
+  let options = {
+    cohort: cohort,
+    cohortData: {
+      users: users,
+      progress: progress
+    },
+/*     orderBy: 'name',
+    orderDirection: 'Ascendente',
+    search: '' */
+  };
+  //Llamando a la función processCohortData, y enviando como parametro el objeto options. 
+  //Esto retornará una lista de usuarios con stats, lo cual se almacena en una variable.
+  let usersWithStats = processCohortData(options);
+  console.log(usersWithStats);
+});
 

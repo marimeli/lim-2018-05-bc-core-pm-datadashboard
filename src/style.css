@@ -10,21 +10,62 @@
 	font-family: 'Bitter', serif;
 }
 
+img {
+	height: 60px;
+	width: 60px;
+	margin-top: 0px;
+	display: flex;
+	float: right;
+	text-decoration: none;
+	list-style: none;
+}
+
+.menu-right {
+	margin: 0px;
+	display: flex;
+	float: right;
+}
+
 body {
 	width: 100%;
 }
 
 h1, p {
 	text-align: center;
+	float: center;
 }
 
 button {
 	background: #F2C94C; 
 	border: none;
 	height: 80px;
-	font-size: 28px;
-	width: 20%;
+	width: 100%;
 	outline: none;
+	display: flex;
+	float: left;
+	padding: 15px 0px; 
+	font-size: 28px;
+}
+
+.options {
+	display: block;
+	text-align: center;
+    border: none;
+    height: 80px;
+    width: 100%;
+    padding: 15px 0px; 
+    font-size: 18px;
+    font-weight: bold;
+    background: black;
+    color: white;
+}
+
+.options:hover {
+	background-color:#F2C94C;
+	color: black;
+	font-size: 18px;
+	font-weight: bold;
+	display: block;
 }
 
 header {
@@ -50,10 +91,13 @@ header {
 
 .menu li {
 	padding: 15px 0px; 
+	top: 150px;
 }
 
 
 .submenu {
+	top: 150px;
+	padding: 25px 0px; 
 	background-color: black;
 	display: block;
 	color: white;
@@ -64,15 +108,18 @@ header {
 }
 
 .submenu:hover {
+	top: 100px;
 	text-decoration: none;
 	background-color:#F2C94C;
 	color: black;
 	font-size: 18px;
 	font-weight: bold;
 	display: block;
+	padding: 25px 0px; 
 }
 
 .submenu ul li {
+	padding: 25px 0px; 
 	width: 100%;
 	background:#F2C94C;
 	color: black;
@@ -103,3 +150,4 @@ header {
 .show {
 	display: block;
 } 
+
