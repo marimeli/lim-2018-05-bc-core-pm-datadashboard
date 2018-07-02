@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  background-size:cover;
+  font-family: open sans-serif;
+}
+
+.loginBox {
+  display:block;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:350px;
+  height:420px;
+  padding:80px 40px;
+  box-sizing:border-box;
+  border-radius:15px;
+  background: #F2F2F2;  
+}
+
+.user {
+  background-color: #ece5dd;
+  width: 100%;
+  background-size: 100% 100%;
+}
+
+.Sign {
+  background-color: #ffe521;
+  display:inline-block;
+  height:40px;
+  width: 200px;
+  line-height:36px;
+  text-align:center;
+  }
+
+.loginBox p {
+  margin:0;
+  
+  padding: 0;
+  font-weight: bold;
+  color: black;
+}
+
+.loginBox input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.loginBox input[type="text"],
+.loginBox input[type="password"]
+
+{
+  border: none;
+  border-bottom: 1px solid black;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: black;
+  font-size: 16px;
+}
+::placeholder
+{
+  color: rgba (255,255,255,.5);
+}
+
+/*Botón Iniciar Sesión*/
+.loginBox input[type="submit"]
+{
+  border: none;
+  outline: none;
+  height:40px;
+  width: 200px;
+  color: black;
+  font-size: 16px;
+  background: #ffe521;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.loginBox input[type="submit"]:hover
+{
+  background: #ffe521;
+  color: #262626;
+}
+
+.loginBox a {
+ color: black;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 80px;
+  margin-bottom: 11px;
+  text-decoration: none;
+}
