@@ -26,18 +26,23 @@ body {
   background-size: 100% 100%;
 }
 
-.Sign {
+.sign {
+  margin-left: 14%;
+  border-radius: 4px;
   background-color: #ffe521;
   display:inline-block;
   height:40px;
   width: 200px;
   line-height:36px;
   text-align:center;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
   }
 
 .loginBox p {
   margin:0;
-  
   padding: 0;
   font-weight: bold;
   color: black;
@@ -85,11 +90,10 @@ body {
   color: #262626;
 }
 
-.loginBox a {
- color: black;
+.getBack{
+  color: black;
   font-size: 14px;
   font-weight: bold;
-  margin-left: 80px;
-  margin-bottom: 11px;
+  margin: 0 0 0 69px;
   text-decoration: none;
 }

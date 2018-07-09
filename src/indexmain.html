@@ -1,47 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Data Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="fontello.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="images/icon-logo.jpg" type="image/x-icon">
+    <title>Data Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fontello.css">
 </head>
+
 <body>
-  <main id="container">
     <header>
-      <div class="header-box">
-        <button id="button-menu">
-          <label for="menu-left" class="icon-menu">Laboratoria</label>
-        </button>
-      </div>
-      <div>
-          <img src="images/ale.png" alt="Alejandra"></img> 
-      </div>
-      <nav id="content-menu" class="disabled menu">
-        <li id="sedes" class="submenu">
-          <span class="icon-globe-1"></span> SEDE
-          <span class="icon-down-open"></span>
-          <ul id="items-sedes" class="hide items"></ul>
-        </li>
-        <li id="cohorts" class="submenu">
-          <span class="icon-graduation-cap"></span> COHORT
-          <span class="icon-down-open"></span>
-          <ul id="items-cohorts" class="hide items"></ul>
-        </li>
-        <button type="button" id="progress" class="options">
-          <span class="icon-chart-line"></span> GLOBAL</button>
-        <button type="button" id="users" class="options">
-          <span class="icon-users"></span> CODERS</button>
-        </ul>
-      </nav>
+        <h1>Laboratoria</h1>
+        <div class="profile">
+            <p id="user-name">Alejandra
+                <span class="icon-down-dir"></span>
+                <ul id="options-list" class="hide options">
+                </ul>
+            </p>
+        </div>
+        <img src="images/ale.png" class="img-profile">
+
     </header>
-    <section id="welcome">
-      <h1>Bienvenida Ale</h1>
-      <p> ¿Cómo te sientes hoy? </p>
-    </section>
-   </main>
-  <script src="data.js"></script>
-  <script src="main.js"></script>
+    <div class="main-container">
+        <div id="sidebar" class="sidebar">
+            <div class="menu-button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="content-menu" class="disabled menu">
+                <p id="home" class="item submenu">
+                    <span class="icon-home"></span>
+                    <a href="indexmain.html"> INICIO </a>
+                </p>
+                <p id="campuses" class="item submenu">
+                    <span class="icon-globe-1"></span> ELEGIR SEDE
+                    <span class="icon-down-open"></span>
+                </p>
+                <ul id="items-campuses" class="hide items">
+                </ul>
+                <p id="cohorts" class="item submenu">
+                    <span class="icon-users"></span> ELEGIR COHORT
+                    <span class="icon-down-open"></span>
+                </p>
+                <ul id="items-cohorts" class="hide items"></ul>
+            </nav>
+        </div>
+        <main id="section-container" class="section-container">
+            <section id="main-content" class="hidden content">
+
+                <img src="images/logo-view.jpeg" class="welcome-image">
+                <p class="background-text">Talento tech femenino de Latinoamérica para el mundo</p>
+                <img src="images/stats.png" class="stats-image">
+                <p class="background-text">Talento tech femenino de Latinoamérica para el mundo</p>
+                <img src="images/minorsign.gif" class="minor-sign">
+                <img src="images/Laboratoria.jpg" class="laboratoria-students-image">
+                <img src="images/majorsign.jpg" class="major-sign">
+                <footer class="contact-information">
+                    <em>@copyright</em>
+                    <br>Todos los derechos reservados
+                    <br>
+                    <br>
+                    <a href="http://www.laboratoria.la/">
+                        <b>
+                            < Conoce más sobre Laboratoria></Conoce>
+                        </b>
+                    </a>
+                </footer>
+            </section>
+        </main>
+    </div>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
