@@ -22,20 +22,6 @@ describe('data', () => {
     const courses = Object.keys(cohort.coursesIndex);
     const { users, progress } = fixtures;
 
-    it('debería retornar arreglo de usuarios con propiedad stats', () => {
-      const processed = computeUsersStats(users, progress, courses);
-
-      assert.equal(users.length, processed.length);
-
-      processed.forEach(user => {
-        assert.ok(user.hasOwnProperty('stats'));
-        assert.isNumber(user.stats.percent);
-        assert.isObject(user.stats.exercises);
-        assert.isObject(user.stats.quizzes);
-        assert.isObject(user.stats.reads);
-      });
-    });
-
     describe('user.stats para el primer usuario en data de prueba - ver carpeta data/', () => {
 
       const processed = computeUsersStats(users, progress, courses);
@@ -58,6 +44,7 @@ describe('data', () => {
           total: 3,
           completed: 2,
           percent: 67,
+          scoreSum: 57,
           scoreAvg: 29,
         });
       });
