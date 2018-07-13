@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="shortcut icon" href="images/icon-logo.jpg" type="image/x-icon">
   <title>Data Dashboard</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="fontello.css">
+  <!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
 </head>
 <body>
+<<<<<<< HEAD
   <header>
     <h1>Laboratoria</h1>
   </header>
@@ -55,6 +58,71 @@
         <h1> LIM PRE CORE 2018 PM </h1>
       </section>
     </main>
+=======
+  <div class="global-container">
+    <header>
+      <h1>Laboratoria</h1>
+      <div class="profile">
+        <p id="user-name">Alejandra
+          <span class="icon-down-dir"></span>
+          <ul id="options-list" class="hide options">
+          </ul>
+        </p>
+      </div>
+      <img src="images/ale.png" class="img-profile">
+    </header>
+    <div class="main-container">
+      <div id="sidebar" class="sidebar">
+        <div class="menu-button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav id="content-menu" class="disabled menu">
+          <p id="home" class="item submenu">
+            <span class="icon-home"></span>
+            <a href="indexmain.html"> INICIO </a>
+          </p>
+          <p id="campuses" class="item submenu">
+            <span class="icon-globe-1"></span> ELEGIR SEDE
+            <span class="icon-down-open"></span>
+          </p>
+          <ul id="items-campuses" class="hide items">
+          </ul>
+          <p id="cohorts" class="item submenu">
+            <span class="icon-users"></span> ELEGIR COHORT
+            <span class="icon-down-open"></span>
+          </p>
+          <ul id="items-cohorts" class="hide items"></ul>
+        </nav>
+      </div>
+      <main id="section-container" class="section-container">
+        <section id="main-content" class="hidden content">
+          <img src="images/logo-view.jpeg" class="welcome-image">
+          <p class="background-text">Talento tech femenino de Latinoamérica para el mundo</p>
+          <img src="images/stats.png" class="stats-image">
+          <p class="background-text">Talento tech femenino de Latinoamérica para el mundo</p>
+        </section>
+        <section id="cohort-content" class="hidden content">
+          <input id="searcher" class="search" type="text" placeholder="Buscar">
+          <select id="sorter" class="selector" placeholder="Ordenar por">
+            <option value="order-by">ORDENAR POR</option>
+            <option value="name">Name</option>
+            <option value="percent">TotalCompleted</option>
+            <option value="exercises">ExercisesPercent</option>
+            <option value="quizzes">QuizzesPercent</option>
+            <option value="scoreAvg">QuizzesAverageScore</option>
+            <option value="reads">ReadsPercent</option>
+          </select>
+          <button id="sort-button" class="button-order">Ascendente</button>
+          <br>
+          <br>
+          <h1> LIM PRE CORE 2018 PM </h1>
+          <table id="users-list" class="users-table"></table>
+        </section>
+      </main>
+    </div>
+>>>>>>> 1793dc6c85d0e6e68ca878d78089b12de0e283e6
   </div>
   <script src="data.js"></script>
   <script src="main.js"></script>
