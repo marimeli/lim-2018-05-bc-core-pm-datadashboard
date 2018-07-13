@@ -11,11 +11,13 @@ const optionsList = document.getElementById('options-list');
 const optionsArr = ['perfil', 'configuración', 'cerrar sesión'];
 const userName = document.getElementById('user-name');
 const selectOrder = document.getElementById('select-order');
-let errorCase = null;
-let campusSection = null;
-let sectionCohort = null;
-let sectionProfile = null;
-let sectionSignOut = null;
+
+
+let sectionCohort = document.getElementById('cohort-content');
+const selectOrderBy = document.getElementById('sorter');
+const searchUser = document.getElementById('searcher'); 
+const ascButton  = document.getElementById('sort-button'); 
+
 
 //Creando objeto options y definiendo sus valores.
 const options = {
@@ -38,44 +40,19 @@ menuButton.addEventListener('click', showSidebar);
 //Función para mostrar y ocultar el submenú
 
 //Función para hacer las peticiones AJAX, usando el método GET
-const getData = (str, url, callback) => {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.addEventListener('load', event => {
-    if (event.target.readyState === 4) {
-      if (event.target.status !== 200) {
-        return console.error(new Error(`HTTP error: ${event.target.status}`));
-      } else {
-        const response = JSON.parse(event.target.responseText);
-        callback(str, response);
-      }
-    }
+const getData = (str,url,callback) => {
+  fetch(url)
+  .then (res=>res.json())
+  .then(res =>{
+    callback(str,res);
   })
-  xhr.send();
-};
+}
 
-//Función para mostrar la lista de cohorts ya filtrado, según la sede seleccionada 2
-const showCohorts = (id, cohortsArr) => {
-  //console.log(id, arrCohorts);
-  const cohortsByCampus = cohortsArr.filter(objCohort => {
-    return objCohort.id.indexOf(id) !== -1;
-  })
-  //console.log(cohortsByCampus);
-  let content = '';
-  cohortsByCampus.forEach((cohort) => {
-    content += `<li id='${cohort.id}' class='listC'>${cohort.id}</li>`
-  })
-  listCohort.innerHTML = content;
-};
-
-//Función para mostrar el progreso de las estudiantes 8
-const showProgress = (idCohort, objProgress) => {
-  options.cohortData.progress = objProgress;
-  let usersWithStats = processCohortData(options);
+const progressInTable = (usersWithStats) => {
   let progressTable = '';
-  progressTable = `<input id="search" class="search" type="text" placeholder="Buscar">
-  <select id="select-order" class="selector" placeholder="Ordenar por">
-  <option value="ordenar-por">ORDENAR POR</option>
+  progressTable = `<input id="searcher" class="search" type="text" placeholder="Buscar">
+ 
+  <option value="order-by">ORDENAR POR</option>
   <option value="name">Name</option>
   <option value="total-completed">TotalCompleted</option>
   <option value="exercises-percent">ExercisesPercent</option>
@@ -83,9 +60,8 @@ const showProgress = (idCohort, objProgress) => {
   <option value="quizzes-average-score">QuizzesAverageScore</option>
   <option value="reads-percent">ReadsPercent</option> 
  </select> 
- <button id="buttonOrder" class="button-order">Ascendente</button> <br> <br>`
- 
-  progressTable +=  `<br> <br> <h1> LIM PRE CORE 2018 PM </h1> <br> <br>`
+ <button id="sort-button" class="button-order">Ascendente</button> <br> <br>`
+  progressTable += `<br> <br> <h1> LIM PRE CORE 2018 PM </h1> <br> <br>`
   sectionMain.innerHTML = progressTable;
   usersWithStats.forEach((user, i) => {
     let listUser = document.createElement('li');
@@ -97,53 +73,92 @@ const showProgress = (idCohort, objProgress) => {
       Total de Lecturas :  ${user.stats.reads.total}<br>
       Lecturas completadas:  ${user.stats.reads.completed} <br>
       Porcentaje de Lecturas  : ${user.stats.reads.percent}  % <br>
+      percent de Quizzes :  ${user.stats.quizzes.percent} <br>
       Total de Quizzes :  ${user.stats.quizzes.total} <br>
       Quizzes completado:  ${user.stats.quizzes.completed} <br>
       Puntuación promedio en quizzes  :  ${user.stats.quizzes.scoreAvg}</li> <br> `
     sectionMain.innerHTML = progressTable;
-  }) 
- };
- 
-  //Función para mostrar a las estudiantes, según el cohort seleccionado 7
-  const showStudents = (idCohort, usersArr) => {
-    //console.log(idCohort, usersArr);//lim-2018-03-pre-core-pw, arreglo de 735 users, luego creo objeto options
-    //aqui le damos nuevos valores al objeto global options
-    options.cohortData.users = usersArr;
-    //console.log(options);
-    getData(idCohort, `../data/cohorts/${idCohort}/progress.json`, showProgress);
+  });
+};
+
+//Función para mostrar el progreso de las estudiantes 
+const showProgress = (idCohort, objProgress) => {
+  options.cohortData.progress = objProgress;
+  let usersWithStats = processCohortData(options);
+  progressInTable(usersWithStats)
+};
+
+//Función para mostrar a las estudiantes, según el cohort seleccionado 
+const showStudents = (idCohort, usersArr) => {
+  options.cohortData.users = usersArr;
+  getData(idCohort, `../data/cohorts/${idCohort}/progress.json`, showProgress);
+};
+
+//Función para mostrar la data del cohort seleccionado 
+const cohortLima = (idCohort, dataCohorts) => {
+  dataCohorts.forEach((objCohort) => {
+    if (objCohort.id === idCohort) {
+      options.cohort = objCohort;
+    }
+    sectionCohort = '<h1> LIM PRE CORE 2018 PM </h1>'
+    sectionMain.innerHTML = sectionCohort;
+  })
+  getData(idCohort, `../data/cohorts/${idCohort}/users.json`, showStudents);
+};
+
+//Función para mostrar la lista de cohorts ya filtrado, según la sede seleccionada 
+const showCohorts = (id, cohortsArr) => {
+  const cohortsByCampus = cohortsArr.filter(objCohort => {
+    return objCohort.id.indexOf(id) !== -1;
+  })
+  let content = '';
+  cohortsByCampus.forEach((cohort) => {
+    content += `<li id='${cohort.id}' class='listC'>${cohort.id}</li>`
+  })
+  listCohort.innerHTML = content;
+};
+//Eventos del DOM: Lista de cohorts, con evento CLIC. 
+listCohort.addEventListener('click', event => {
+  const id = event.target.id;
+  getData(id, '../data/cohorts.json', cohortLima);
+});
+
+//Creando nodos del DOM: Lista de sedes, con evento CLIC. 
+campusesArr.forEach((element, i) => {
+  const campus = document.createElement('li');
+  campus.textContent = campusesArr[i];
+  campus.id = campusesArr[i];
+  listCampus.appendChild(campus);
+});
+listCampus.addEventListener('click', event => {
+  const id = event.target.id;
+  getData(id, '../data/cohorts.json', showCohorts)
+});
+
+searchUser.addEventListener('keyup', e => {
+  const valueInput = e.target.value;
+  options.search = valueInput;
+  
+  const userfiltered = processCohortData(options);
+  progressInTable(userfiltered);
+});
+
+{/* <select id="sorter" class="selector" placeholder="Ordenar por">
+selectOrderBy.addEventListener('change',e => {
+  const valueOrder = e.target.value;
+  options.orderBy = valueOrder;
+}); */}
+
+ascButton.addEventListener('change', e => {
+  const direction = ascButton.innerText;
+  if (direction == "ASC") {
+    ascButton.innerText = "DESC";
+    options.orderDirection = "DESC";
+  } else {
+    ascButton.innerText = "ASC";
+    options.orderDirection = "ASC"
   };
+});
 
-  //Función para mostrar la data del cohort seleccionado 6
-  const cohortLima = (idCohort, dataCohorts) => {
-    //console.log(idCohort, dataCohorts);//lim , 51 cohorts 
-    dataCohorts.forEach((objCohort) => {
-      //console.log(objCohort); todos los cohorts
-      if (objCohort.id === idCohort) {
-        options.cohort = objCohort;
-      }
-      sectionCohort = '<h1> LIM PRE CORE 2018 PM </h1>'
-      sectionMain.innerHTML = sectionCohort;
-    })
-  };
-
-  //Creando nodos del DOM: Lista de sedes, con evento CLIC. 1
-  campusesArr.forEach((element, i) => {
-    const campus = document.createElement('li');
-    campus.textContent = campusesArr[i];
-    campus.id = campusesArr[i];
-    listCampus.appendChild(campus);
-  });
-  listCampus.addEventListener('click', event => {
-    const id = event.target.id;
-    getData(id, '../data/cohorts.json', showCohorts)
-  });
-
-  //Eventos del DOM: Lista de cohorts, con evento CLIC. 3
-  listCohort.addEventListener('click', event => {
-    const id = event.target.id;
-    //console.log(id); //lim-2018-03-pre-core-pw
-    getData(id, '../data/cohorts.json', cohortLima);
-    getData(id, `../data/cohorts/${id}/users.json`, showStudents);
-  });
 
 

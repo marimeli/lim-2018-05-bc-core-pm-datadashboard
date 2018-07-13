@@ -128,7 +128,7 @@
   } 
    */
   
-	 .selector {
+	 .select {
 		margin: -7% 0.8% 0 0;
 		width: 15%;
 		height: 40px;
@@ -144,8 +144,12 @@
 	 }
 	 
 	 .button-order {
-		width: 10%;
+		width: 20%;
 		height: 40px;
 		margin-right: 23%;
 		border-radius: 4px;
 	 }  
+
+	 .hidden {
+		 display: none;
+	 }
