@@ -25,8 +25,8 @@ const options = {
     users: null,
     progress: null
   },
-  orderBy: 'name',
-  orderDirection: 'ASC',
+  orderBy: '',
+  orderDirection: '',
   search: ''
 };
 
@@ -105,6 +105,7 @@ const getData = (str, url, callback) => {
 };
 
 const progressInTable = (usersWithStats) => {
+  console.log(usersWithStats);
   let progressTable = '';
   progressTable += `
   <thead class="header-table">
@@ -123,8 +124,8 @@ const progressInTable = (usersWithStats) => {
     let listProgress = document.createElement('th');
     tbodyContent += `
     <tr>
-      <th scope="row">${options.cohortData.users[i].name}</th>
-      <th scope="row"> ${user.stats.percent}</th>
+      <th scope="row">${user.name}</th>
+      <th scope="row">${user.stats.percent}</th>
       <th scope="row">${user.stats.exercises.percent}</th>
       <th scope="row">${user.stats.quizzes.percent}</th>
       <th scope="row">${user.stats.quizzes.scoreAvg}</th>
@@ -134,6 +135,7 @@ const progressInTable = (usersWithStats) => {
   //Corregir posición de la tabla
   usersList.innerHTML = progressTable + '<tbody>' + tbodyContent + '</tbody>';
 };
+
 
 //Función para mostrar el progreso de las estudiantes 
 const showProgress = (idCohort, objProgress) => {
@@ -157,7 +159,7 @@ const cohortLima = (idCohort, dataCohorts) => {
     }
     ////No pinta el mensaje de error CORREGIR
     else {
-      errorCase = `<h3> No hay información sobre este cohort, escoge otro por favor </h3>`
+      errorCase = `<h3> PROGRESO DEL COHORT </h3>`
       sectionMain.innerHTML = errorCase;
     }
   })
@@ -211,25 +213,27 @@ listCampus.addEventListener('click', event => {
 
 
 searchUser.addEventListener('keyup', e => {
-  const valueInput = e.target.value;
-  options.search = valueInput;
+  options.search = searchUser.value;
   const userfiltered = processCohortData(options);
   progressInTable(userfiltered);
 });
 
-selectOrderBy.addEventListener('change',e => {
-  const valueOrder = e.target.value;
-  options.orderBy = valueOrder;
-}); 
-
-ascButton.addEventListener('change', e => {
-  const direction = ascButton.innerText;
-  if (direction == "ASC") {
-    ascButton.innerText = "DESC";
-    options.orderDirection = "DESC";
-  } else {
-    ascButton.innerText = "ASC";
-    options.orderDirection = "ASC"
-  };
+selectOrderBy.addEventListener('change', e => {
+  options.orderBy = selectOrderBy.value;
+  const userOrdered = processCohortData(options);
+  progressInTable(userOrdered);
 });
 
+ascButton.addEventListener('click', e => {
+  const direction = ascButton.innerText;
+  if (direction == 'ASCENDENTE') {
+    options.orderDirection = 'ASC';
+    ascButton.innerText = 'DESCENDENTE';
+    
+  } else {
+    options.orderDirection = 'DESC'
+    ascButton.innerText = 'ASCENDENTE';
+  };
+  const userOrdered = processCohortData(options);
+  progressInTable(userOrdered);
+});

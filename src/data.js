@@ -1,4 +1,7 @@
 window.computeUsersStats = (users, progress, courses) => {
+    /*     console.log(users);
+        console.log(progress);
+        console.log(courses); */
     console.log('Entré a computeUsersStats!');
     //Filtrar para validar que todos los usuarios sean estudiantes. 
     let students = users.filter(user => user.role === 'student');
@@ -81,11 +84,16 @@ window.computeUsersStats = (users, progress, courses) => {
         };
         return userWithStats
     });
+    console.log(students);
     return students; //array de 727 students
+
 };
 
 window.sortUsers = (users, orderBy, orderDirection) => {
     console.log('Entré a sortUsers!');
+    console.log(users);
+    console.log(orderBy);
+    console.log(orderDirection);
     const sortByName = (a, b) => {
         if (a.name > b.name) {
             return 1;
@@ -151,27 +159,34 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     if (orderDirection === 'DESC') {
         sortedUsers = sortedUsers.reverse();
     };
+    console.log(sortedUsers);
     return sortedUsers;
 };
 
 window.filterUsers = (users, search) => {
     console.log('Entré a filterUsers!');
-    let filteredUsers = users.filter(user => {
-        (user.name.toLowerCase().indexOf(search.toLowerCase()) > -1);
-    });
-        return filteredUsers;
-};
+/*     console.log(users);
+    console.log(search); */
+    let filteredUsers;
 
+    if (search === '') {
+        filteredUsers = users;
+    } else {
+        filteredUsers = users.filter(user =>
+            (user.name.includes(search.toLowerCase()))
+        );
+    }
+   /*  console.log(filteredUsers); */
+    return filteredUsers;
+};
 //Función que retorna un arreglo de usuario con stats ya calculados
 window.processCohortData = (options) => {
     console.log('Entré a processCohortData!');
+    console.log(options);
     let courses = Object.keys(options.cohort.coursesIndex);
     let studentWithStats = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses);
     let sortedData = sortUsers(studentWithStats, options.orderBy, options.orderDirection);
     let filterData = filterUsers(sortedData, options.search);
-    return sortedData; //return sortedData; 
-
-   /*  if (options.search !== '') {
-        students = filterUsers(students, options.search);
-      } */
+    console.log(filterData);
+    return filterData;
 };
