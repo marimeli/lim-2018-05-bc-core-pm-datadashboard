@@ -1,8 +1,6 @@
 //Almacenando las variables para la selección de DOM
 const menuButton = document.querySelector('.menu-button')
-const submenu = document.getElementsByClassName('submenu');
 const campusesArr = ['aqp', 'cdmx', 'gdl', 'lim', 'scl', 'spl'];
-const orderListArr = ['Name', 'TotalCompleted', 'ExercisesPercent', 'QuizzesPercent', 'QuizzesAverageScore', 'ReadsPercent'];
 const listCampus = document.getElementById('items-campuses');
 const listCohort = document.getElementById('items-cohorts');
 const sectionMain = document.querySelector('#main-content');
@@ -12,11 +10,15 @@ const optionsList = document.getElementById('options-list');
 const optionsArr = ['perfil', 'mensajes', 'cerrar sesión'];
 const userName = document.getElementById('user-name');
 const usersList = document.getElementById('users-list');
+const selectOrderBy = document.getElementById('sorter');
+const searchUser = document.getElementById('searcher');
+const ascButton = document.getElementById('sort-button');
+let sectionCohort = document.getElementById('cohort-content');
 let errorCase = null;
 let campusSection = null;
 let sectionProfile = null;
 
-//Creando objeto options y definiendo sus valores.
+//Creando objeto options 
 const options = {
   cohort: null,
   cohortData: {
@@ -24,7 +26,7 @@ const options = {
     progress: null
   },
   orderBy: 'name',
-  orderDirection: 'Ascendente',
+  orderDirection: 'ASC',
   search: ''
 };
 
@@ -39,15 +41,13 @@ const showOptionsList = () => {
 };
 userName.addEventListener('click', showOptionsList);
 
-
-//Crea lista de opciones del perfil de usuario
+//Creando lista de opciones del perfil de usuario
 optionsArr.forEach((element, i) => {
   const option = document.createElement('li');
   option.textContent = optionsArr[i];
   option.id = optionsArr[i];
   optionsList.appendChild(option);
 });
-
 
 //Función para mostrar la vista de la opción seleccionada
 const optionSelected = (optionsList) => {
@@ -58,15 +58,14 @@ const optionSelected = (optionsList) => {
   else if (optionsList === 'cerrar sesión') {
     window.location.assign("index.html")
   }
-  else if (optionsList === 'mensajes'){
-  alert('No tienes ningún mensaje por el momento');
+  else if (optionsList === 'mensajes') {
+    alert('No tienes ningún mensaje por el momento');
   }
 };
 optionsList.addEventListener('click', event => {
   const id = event.target.id;
   getData(id, '../data/cohorts.json', optionSelected);
 });
-
 
 //Función para mostrar y ocultar el menú
 const showSidebar = () => {
@@ -98,61 +97,50 @@ cohorts.addEventListener('click', showCohortsList);
 
 //Función para hacer las peticiones AJAX, usando el método GET
 const getData = (str, url, callback) => {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.addEventListener('load', event => {
-    if (event.target.readyState === 4) {
-      if (event.target.status !== 200) {
-        return console.error(new Error(`HTTP error: ${event.target.status}`));
-      } else {
-        const response = JSON.parse(event.target.responseText);
-        callback(str, response);
-      }
-    }
-  })
-  xhr.send();
+  fetch(url)
+    .then(res => res.json())
+    .then(res => {
+      callback(str, res);
+    });
 };
 
-
-//Función para mostrar el progreso de las estudiantes 
-const showProgress = (idCohort, objProgress) => {
-  options.cohortData.progress = objProgress;
-  //processCohortData(options)
-  let usersWithStats = processCohortData(options);
+const progressInTable = (usersWithStats) => {
   let progressTable = '';
-  progressTable +=
-
-    ` <thead class="header-table">
-           <tr>
-               <th scope="col">Alumna</th>
-               <th scope="col">% Total</th>
-               <th scope="col">% Ejercicios</th>
-               <th scope="col">% Quizzes</th>
-               <th scope="col">Quizzes Average Score</th>
-               <th scope="col">% Reads</th>
-           </tr> 
-     </thead>
-       `
+  progressTable += `
+  <thead class="header-table">
+    <tr>
+      <th scope="col">Alumna</th>
+      <th scope="col">% Total</th>
+      <th scope="col">% Ejercicios</th>
+      <th scope="col">% Quizzes</th>
+      <th scope="col">Quizzes Average Score</th>
+      <th scope="col">% Reads</th>
+    </tr> 
+  </thead> `
   let tbodyContent = ''
   usersWithStats.forEach((user, i) => {
     let listUser = document.createElement('tr');
     let listProgress = document.createElement('th');
     tbodyContent += `
-   <tr>
-       <th scope="row">${options.cohortData.users[i].name}</th>
-       <th scope="row"> ${user.stats.percent}</th>
-       <th scope="row">${user.stats.exercises.percent}</th>
-       <th scope="row">${user.stats.quizzes.percent}</th>
-       <th scope="row">${user.stats.quizzes.scoreAvg}</th>
-       <th scope="row">${user.stats.reads.percent}</th>
-   </tr>
-`
+    <tr>
+      <th scope="row">${options.cohortData.users[i].name}</th>
+      <th scope="row"> ${user.stats.percent}</th>
+      <th scope="row">${user.stats.exercises.percent}</th>
+      <th scope="row">${user.stats.quizzes.percent}</th>
+      <th scope="row">${user.stats.quizzes.scoreAvg}</th>
+      <th scope="row">${user.stats.reads.percent}</th>
+   </tr>`
   });
   //Corregir posición de la tabla
   usersList.innerHTML = progressTable + '<tbody>' + tbodyContent + '</tbody>';
-
 };
 
+//Función para mostrar el progreso de las estudiantes 
+const showProgress = (idCohort, objProgress) => {
+  options.cohortData.progress = objProgress;
+  let usersWithStats = processCohortData(options);
+  progressInTable(usersWithStats)
+};
 
 //Función para mostrar a las estudiantes, según el cohort seleccionado 
 const showStudents = (idCohort, usersArr) => {
@@ -160,8 +148,7 @@ const showStudents = (idCohort, usersArr) => {
   getData(idCohort, `../data/cohorts/${idCohort}/progress.json`, showProgress);
 };
 
-
-//Función para mostrar la data del cohort seleccionado 6
+//Función para mostrar la data del cohort seleccionado 
 const cohortLima = (idCohort, dataCohorts) => {
   dataCohorts.forEach((objCohort) => {
     //console.log(objCohort); todos los cohorts
@@ -177,9 +164,7 @@ const cohortLima = (idCohort, dataCohorts) => {
   getData(idCohort, `../data/cohorts/${idCohort}/users.json`, showStudents);
 };
 
-
-
-//Función para mostrar la lista de cohorts ya filtrado, según la sede seleccionada 2
+//Función para mostrar la lista de cohorts ya filtrado, según la sede seleccionada 
 const showCohorts = (id, cohortsArr) => {
   //console.log(id, arrCohorts);
   const cohortsByCampus = cohortsArr.filter(objCohort => {
@@ -211,8 +196,7 @@ const campusSelected = (listCampus) => {
   }
 };
 
-
-//Creando nodos del DOM: Lista de sedes, con evento CLIC. 1
+//Creando nodos del DOM: Lista de sedes, con evento CLIC. 
 campusesArr.forEach((element, i) => {
   const campus = document.createElement('li');
   campus.textContent = campusesArr[i];
@@ -223,5 +207,29 @@ listCampus.addEventListener('click', event => {
   const id = event.target.id;
   getData(id, '../data/cohorts.json', showCohorts)
   getData(id, '../data/cohorts.json', campusSelected)
+});
+
+
+searchUser.addEventListener('keyup', e => {
+  const valueInput = e.target.value;
+  options.search = valueInput;
+  const userfiltered = processCohortData(options);
+  progressInTable(userfiltered);
+});
+
+selectOrderBy.addEventListener('change',e => {
+  const valueOrder = e.target.value;
+  options.orderBy = valueOrder;
+}); 
+
+ascButton.addEventListener('change', e => {
+  const direction = ascButton.innerText;
+  if (direction == "ASC") {
+    ascButton.innerText = "DESC";
+    options.orderDirection = "DESC";
+  } else {
+    ascButton.innerText = "ASC";
+    options.orderDirection = "ASC"
+  };
 });
 

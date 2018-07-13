@@ -46,12 +46,11 @@ window.computeUsersStats = (users, progress, courses) => {
                         case 'quiz':
                             const quizzes = parts.filter(part => part.type === 'quiz');
                             const quizzesDone = parts.filter(part => part.type === 'quiz' && part.completed === 1);
-                            total += quizzes.length;
-                            completed += quizzesDone.length;
                             quizzesDone.forEach(quiz => {
                                 scoreSum += quiz.score;
                             });
-                            scoreAvg = Math.round(scoreSum / total);
+                            total += quizzes.length;
+                            completed += quizzesDone.length;
                             break;
                     };
                 });
@@ -64,7 +63,7 @@ window.computeUsersStats = (users, progress, courses) => {
         };
         if (type === 'quiz') {
             results.scoreSum = scoreSum;
-            results.scoreAvg = scoreAvg;
+            results.scoreAvg = Math.round(scoreSum / total);
         }
         return results;
     });
@@ -94,7 +93,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
             return -1;
         } return 0;
     };
-    
+
     const sortByPercent = (a, b) => {
         if (a.stats.percent > b.stats.percent) {
             return 1;
@@ -102,7 +101,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
             return -1;
         } return 0;
     };
-    
+
     const sortByExercises = (a, b) => {
         if (a.stats.exercises.percent > b.stats.exercises.percent) {
             return 1;
@@ -110,7 +109,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
             return -1;
         } return 0;
     };
-    
+
     const sortByReads = (a, b) => {
         if (a.stats.reads.percent > b.stats.reads.percent) {
             return 1;
@@ -118,7 +117,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
             return -1;
         } return 0;
     };
-    
+
     const sortByQuizzes = (a, b) => {
         if (a.stats.quizzes.percent > b.stats.quizzes.percent) {
             return 1;
@@ -126,7 +125,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
             return -1;
         } return 0;
     };
-    
+
     const sortByScoreAvg = (a, b) => {
         if (a.stats.quizzes.scoreAvg > b.stats.quizzes.scoreAvg) {
             return 1;
@@ -157,7 +156,10 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 
 window.filterUsers = (users, search) => {
     console.log('Entré a filterUsers!');
-    let filteredUsers = users.filter(user => user.name.toLowerCase().indexOf(search.toLowerCase()) > -1);
+    let filteredUsers = users.filter(user => {
+        (user.name.toLowerCase().indexOf(search.toLowerCase()) > -1);
+    });
+        return filteredUsers;
 };
 
 //Función que retorna un arreglo de usuario con stats ya calculados
@@ -167,5 +169,9 @@ window.processCohortData = (options) => {
     let studentWithStats = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses);
     let sortedData = sortUsers(studentWithStats, options.orderBy, options.orderDirection);
     let filterData = filterUsers(sortedData, options.search);
-    return studentWithStats; //return sortedData; 
+    return sortedData; //return sortedData; 
+
+   /*  if (options.search !== '') {
+        students = filterUsers(students, options.search);
+      } */
 };
