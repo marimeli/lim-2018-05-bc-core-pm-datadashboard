@@ -1,10 +1,7 @@
 window.computeUsersStats = (users, progress, courses) => {
-<<<<<<< HEAD
-=======
     /*     console.log(users);
         console.log(progress);
         console.log(courses); */
->>>>>>> 1793dc6c85d0e6e68ca878d78089b12de0e283e6
     console.log('Entré a computeUsersStats!');
     //Filtrar para validar que todos los usuarios sean estudiantes. 
     let students = users.filter(user => user.role === 'student');
@@ -73,23 +70,6 @@ window.computeUsersStats = (users, progress, courses) => {
         }
         return results;
     });
-<<<<<<< HEAD
-
-    //Método map para recorrer array de objetos y obtener un nuevo array
-    students = students.map(user => {
-        const userWithStats = {
-            name: user.name,
-            stats: {
-                percent: calculatePercent(user),
-                exercises: calculateStats(user, 'practice'),
-                reads: calculateStats(user, 'read'),
-                quizzes: calculateStats(user, 'quiz')
-            }
-        };
-        return userWithStats
-    });
-    return students; //array de 727 students
-=======
 
     //Método map para recorrer array de objetos y obtener un nuevo array
     students = students.map(user => {
@@ -107,17 +87,13 @@ window.computeUsersStats = (users, progress, courses) => {
     console.log(students);
     return students; //array de 727 students
 
->>>>>>> 1793dc6c85d0e6e68ca878d78089b12de0e283e6
 };
 
 window.sortUsers = (users, orderBy, orderDirection) => {
     console.log('Entré a sortUsers!');
-<<<<<<< HEAD
-=======
     console.log(users);
     console.log(orderBy);
     console.log(orderDirection);
->>>>>>> 1793dc6c85d0e6e68ca878d78089b12de0e283e6
     const sortByName = (a, b) => {
         if (a.name > b.name) {
             return 1;
@@ -183,26 +159,12 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     if (orderDirection === 'DESC') {
         sortedUsers = sortedUsers.reverse();
     };
-<<<<<<< HEAD
-=======
     console.log(sortedUsers);
->>>>>>> 1793dc6c85d0e6e68ca878d78089b12de0e283e6
     return sortedUsers;
 };
 
 window.filterUsers = (users, search) => {
     console.log('Entré a filterUsers!');
-<<<<<<< HEAD
-    let filteredUsers = users.filter(user => {
-        (user.name.toLowerCase().indexOf(search.toLowerCase()) > -1);
-    });
-        return filteredUsers;
-};
-
-//Función que retorna un arreglo de usuario con stats ya calculados
-window.processCohortData = (options) => {
-    console.log('Entré a processCohortData!');
-=======
 /*     console.log(users);
     console.log(search); */
     let filteredUsers;
@@ -221,21 +183,10 @@ window.processCohortData = (options) => {
 window.processCohortData = (options) => {
     console.log('Entré a processCohortData!');
     console.log(options);
->>>>>>> 1793dc6c85d0e6e68ca878d78089b12de0e283e6
     let courses = Object.keys(options.cohort.coursesIndex);
     let studentWithStats = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses);
     let sortedData = sortUsers(studentWithStats, options.orderBy, options.orderDirection);
     let filterData = filterUsers(sortedData, options.search);
-<<<<<<< HEAD
-    return sortedData; //return sortedData; 
-
-   /*  if (options.search !== '') {
-        students = filterUsers(students, options.search);
-      } */
-};
-
-=======
     console.log(filterData);
     return filterData;
 };
->>>>>>> 1793dc6c85d0e6e68ca878d78089b12de0e283e6
