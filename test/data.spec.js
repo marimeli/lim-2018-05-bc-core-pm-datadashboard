@@ -101,6 +101,13 @@ describe('data', () => {
   describe('processCohortData({ cohortData, orderBy, orderDirection, filterBy })', () => {
 
     it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter');
+  /*   it('debería ser un array', () => {
+      assert.equal(typeof sortUsers, 'array');
+    }); */
+
+  /*   it('debería retornar arreglo de usuarios', () => {
+      assert.isObject(studentWithStats, options.orderBy, options.orderDirection);
+    }); */
 
   });
 

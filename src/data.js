@@ -86,7 +86,6 @@ window.computeUsersStats = (users, progress, courses) => {
     });
     console.log(students);
     return students; //array de 727 students
-
 };
 
 window.sortUsers = (users, orderBy, orderDirection) => {
@@ -165,8 +164,8 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 
 window.filterUsers = (users, search) => {
     console.log('Entré a filterUsers!');
-/*     console.log(users);
-    console.log(search); */
+    /*     console.log(users);
+        console.log(search); */
     let filteredUsers;
 
     if (search === '') {
@@ -176,7 +175,7 @@ window.filterUsers = (users, search) => {
             (user.name.includes(search.toLowerCase()))
         );
     }
-   /*  console.log(filteredUsers); */
+    /*  console.log(filteredUsers); */
     return filteredUsers;
 };
 //Función que retorna un arreglo de usuario con stats ya calculados
@@ -187,6 +186,6 @@ window.processCohortData = (options) => {
     let studentWithStats = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses);
     let sortedData = sortUsers(studentWithStats, options.orderBy, options.orderDirection);
     let filterData = filterUsers(sortedData, options.search);
-    console.log(filterData);
+    //console.log(filterData);
     return filterData;
 };
