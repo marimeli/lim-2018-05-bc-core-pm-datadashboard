@@ -25,8 +25,8 @@ const options = {
     users: null,
     progress: null
   },
-  orderBy: 'name',
-  orderDirection: 'ASC',
+  orderBy: '',
+  orderDirection: '',
   search: ''
 };
 
@@ -226,13 +226,13 @@ selectOrderBy.addEventListener('change', e => {
 
 ascButton.addEventListener('click', e => {
   const direction = ascButton.innerText;
-  if (direction == 'ASC') {
+  if (direction == 'ASCENDENTE') {
     options.orderDirection = 'ASC';
-    ascButton.innerText = 'DES';
+    ascButton.innerText = 'DESCENDENTE';
     
   } else {
     options.orderDirection = 'DESC'
-    ascButton.innerText = 'ASC';
+    ascButton.innerText = 'ASCENDENTE';
   };
   const userOrdered = processCohortData(options);
   progressInTable(userOrdered);

@@ -1,10 +1,13 @@
 window.computeUsersStats = (users, progress, courses) => {
-    //Filtrar para validar que todos los usuarios sean estudiantes.
+    /*     console.log(users);
+        console.log(progress);
+        console.log(courses); */
+    console.log('Entré a computeUsersStats!');
+    //Filtrar para validar que todos los usuarios sean estudiantes. 
     let students = users.filter(user => user.role === 'student');
-    //console.log(students);
 
     //Función para calcular el porcentaje de completitud de cada curso del usuario.
-    const calculatePercent = (user) => {
+    const calculatePercent = (user => {
         let percent = 0;
         courses.forEach(course => {
             const userProgress = progress[user.id];
@@ -12,82 +15,65 @@ window.computeUsersStats = (users, progress, courses) => {
                 percent += userProgress[course].percent;
             };
         });
-        return percent / courses.length;
-    };
+        return Math.round(percent / courses.length);
+    });
 
     //Función para calcular el progreso de cada usuario.
-    const calculateStats = (user, type) => {
+    const calculateStats = ((user, type) => {
         let total = 0;
         let completed = 0;
         let scoreSum = 0;
         let scoreAvg = 0;
-        courses.forEach((course) => {
+        courses.forEach(course => {
             const userProgress = progress[user.id];
             if (userProgress.hasOwnProperty(course)) {
                 const units = Object.values(userProgress[course].units);
                 units.forEach(unit => {
                     const parts = Object.values(unit.parts);
                     switch (type) {
-                        //Para evaluar todos los ejercicios que sean de tipo practica
-                        case "practice":
-                            const myExercises = parts.filter(part => part.type === "practice" && part.hasOwnProperty("exercises"));
-                            myExercises.forEach((objExercise, i) => {
-                                total += Object.keys(myExercises[i].exercises).length;
-                                Object.values(objExercise.exercises).forEach(objExercise => {
-                                    completed += objExercise.completed;
+                        case 'practice':
+                            const exercises = parts.filter(part => part.type === 'practice' && part.hasOwnProperty('exercises'));
+                            exercises.forEach((exercise, i) => {
+                                total += Object.keys(exercises[i].exercises).length;
+                                Object.values(exercise.exercises).forEach(exercise => {
+                                    completed += exercise.completed;
                                 });
                             });
                             break;
-                        //Para determinar todas las lecturas completadas
-                        case "read":
-                            const reads = parts.filter(part => part.type === "read");
-                            reads.forEach((objRead) => {
-                                completed += objRead.completed;
-                            });
+                        case 'read':
+                            const reads = parts.filter(part => part.type === 'read');
+                            const readsDone = parts.filter(part => part.type === 'read' && part.completed === 1);
                             total += reads.length;
+                            completed += readsDone.length;
                             break;
-                        //Para sabes la puntuación promedio de las evaluaciones
-                        case "quiz":
-                            const quizzes = parts.filter(part => part.type === "quiz");
-                            quizzes.forEach((objQuiz) => {
-                                completed += objQuiz.completed;
-                                if (objQuiz.hasOwnProperty('score')) {
-                                    scoreSum += objQuiz.score;
-                                } else {
-                                    scoreSum += 0;
-                                }
+                        case 'quiz':
+                            const quizzes = parts.filter(part => part.type === 'quiz');
+                            const quizzesDone = parts.filter(part => part.type === 'quiz' && part.completed === 1);
+                            quizzesDone.forEach(quiz => {
+                                scoreSum += quiz.score;
                             });
                             total += quizzes.length;
+                            completed += quizzesDone.length;
                             break;
-                    }
-                })
-            }
+                    };
+                });
+            };
         });
-        //Almacenando los resultados del progreso de cada usuario
-        let results = {};
-        if (completed !== 0) {
-            results.total = total;
-            results.completed = completed;
-            results.percent = Math.round(completed * 100 / total);
-        } else {
-            results.completed = 0;
-            results.percent = 0;
+        let results = {
+            total: total,
+            completed: completed,
+            percent: Math.round(completed * 100 / total)
         };
-        
-        if (type === "quiz") {
-            if (completed !== 0) {
-                results.scoreSum = scoreSum;
-                results.scoreAvg = Math.round(scoreSum / completed);
-            } else {
-                results.scoreAvg = 0;
-            }
+        if (type === 'quiz') {
+            results.scoreSum = scoreSum;
+            results.scoreAvg = Math.round(scoreSum / total);
         }
         return results;
-    };
+    });
 
-//Asignando stats y nombre a los usuarios filtrados
+    //Método map para recorrer array de objetos y obtener un nuevo array
     students = students.map(user => {
-        let usersWithStats = {
+        const userWithStats = {
             name: user.name,
             stats: {
                 percent: calculatePercent(user),
@@ -95,12 +81,11 @@ window.computeUsersStats = (users, progress, courses) => {
                 reads: calculateStats(user, 'read'),
                 quizzes: calculateStats(user, 'quiz')
             }
-        }
-        return usersWithStats;
-        //console.log(usersWithStats);
+        };
+        return userWithStats
     });
-    return students;
-    //console.log(students);
+    console.log(students);
+    return students; //array de 727 students
 };
 
 window.sortUsers = (users, orderBy, orderDirection) => {
@@ -177,11 +162,22 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     return sortedUsers;
 };
 
-window.filterUsers=(users,search)=>{
-    let filteredUsers = users.filter(user => user.name.toUpperCase().indexOf(search.toUpperCase()) > -1);
+window.filterUsers = (users, search) => {
+    console.log('Entré a filterUsers!');
+    /*     console.log(users);
+        console.log(search); */
+    let filteredUsers;
+
+    if (search === '') {
+        filteredUsers = users;
+    } else {
+        filteredUsers = users.filter(user =>
+            (user.name.includes(search.toLowerCase()))
+        );
+    }
+    /*  console.log(filteredUsers); */
     return filteredUsers;
 };
-
 //Función que retorna un arreglo de usuario con stats ya calculados
 window.processCohortData = (options) => {
     console.log('Entré a processCohortData!');
