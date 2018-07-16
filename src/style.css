@@ -176,7 +176,7 @@ body.sidebar-active #sidebar {
 }
 
 .welcome-image {
-	width: 80%;
+	width: 100%;
 	height: 400px;
 	margin-top: 1%;
 	padding-top: 70px;
@@ -286,5 +286,8 @@ body.sidebar-active #sidebar {
   border: 1px solid black;
 }
 
+.user-progress {
+display: none;
+}  
 @media screen and (max-width: 800px) {
 }
