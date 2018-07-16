@@ -16,6 +16,7 @@ const ascButton = document.getElementById('sort-button');
 let sectionCohort = document.getElementById('cohort-content');
 let errorCase = null;
 let campusSection = null;
+let campusLima= null;
 let sectionProfile = null;
 
 //Creando objeto options 
@@ -156,9 +157,10 @@ const cohortLima = (idCohort, dataCohorts) => {
     //console.log(objCohort); todos los cohorts
     if (objCohort.id === idCohort) {
       options.cohort = objCohort;
+      
     }
     ////No pinta el mensaje de error CORREGIR
-    else {
+    else if (objCohort.id !== idCohort) {
       errorCase = `<h3> PROGRESO DEL COHORT </h3>`
       sectionMain.innerHTML = errorCase;
     }

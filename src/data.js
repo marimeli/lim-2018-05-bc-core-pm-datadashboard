@@ -4,19 +4,17 @@ window.computeUsersStats = (users, progress, courses) => {
     //console.log(students);
 
     //Función para calcular el porcentaje de completitud de cada curso del usuario.
-    const calculatePercent = (user) => {
+    const calculateCoursePercent = (user) => {
         let percent = 0;
         courses.forEach(course => {
             const userProgress = progress[user.id];
-            if (userProgress.hasOwnProperty(course)) {
-                percent += userProgress[course].percent;
-            };
+            (userProgress.hasOwnProperty(course)) ? percent += userProgress[course].percent : percent = 0;
         });
         return percent / courses.length;
     };
 
     //Función para calcular el progreso de cada usuario.
-    const calculateStats = (user, type) => {
+    const calculateUsersStats = (user, type) => {
         let total = 0;
         let completed = 0;
         let scoreSum = 0;
@@ -28,27 +26,20 @@ window.computeUsersStats = (users, progress, courses) => {
                 units.forEach(unit => {
                     const parts = Object.values(unit.parts);
                     switch (type) {
-                        //Para evaluar todos los ejercicios que sean de tipo practica
-                        case "practice":
-                            const myExercises = parts.filter(part => part.type === "practice" && part.hasOwnProperty("exercises"));
-                            myExercises.forEach((objExercise, i) => {
-                                total += Object.keys(myExercises[i].exercises).length;
-                                Object.values(objExercise.exercises).forEach(objExercise => {
-                                    completed += objExercise.completed;
-                                });
-                            });
+                        case 'practice': //Para evaluar todos los ejercicios que sean de tipo practica
+                            const myExercises = parts.filter(part => part.type === 'practice' && part.hasOwnProperty('exercises'));
+                            myExercises.forEach(objExercise => completed += objExercise.completed);
+                            total += myExercises.length;
                             break;
                         //Para determinar todas las lecturas completadas
-                        case "read":
-                            const reads = parts.filter(part => part.type === "read");
-                            reads.forEach((objRead) => {
-                                completed += objRead.completed;
-                            });
+                        case 'read':
+                            const reads = parts.filter(part => part.type === 'read');
+                            reads.forEach(objRead => completed += objRead.completed);
                             total += reads.length;
                             break;
                         //Para sabes la puntuación promedio de las evaluaciones
-                        case "quiz":
-                            const quizzes = parts.filter(part => part.type === "quiz");
+                        case 'quiz':
+                            const quizzes = parts.filter(part => part.type === 'quiz');
                             quizzes.forEach((objQuiz) => {
                                 completed += objQuiz.completed;
                                 if (objQuiz.hasOwnProperty('score')) {
@@ -60,7 +51,7 @@ window.computeUsersStats = (users, progress, courses) => {
                             total += quizzes.length;
                             break;
                     }
-                })
+                });
             }
         });
         //Almacenando los resultados del progreso de cada usuario
@@ -72,9 +63,8 @@ window.computeUsersStats = (users, progress, courses) => {
         } else {
             results.completed = 0;
             results.percent = 0;
-        };
-        
-        if (type === "quiz") {
+        }
+        if (type === 'quiz') {
             if (completed !== 0) {
                 results.scoreSum = scoreSum;
                 results.scoreAvg = Math.round(scoreSum / completed);
@@ -85,17 +75,17 @@ window.computeUsersStats = (users, progress, courses) => {
         return results;
     };
 
-//Asignando stats y nombre a los usuarios filtrados
+    //Asignando stats y nombre a los usuarios filtrados
     students = students.map(user => {
         let usersWithStats = {
             name: user.name,
             stats: {
-                percent: calculatePercent(user),
-                exercises: calculateStats(user, 'practice'),
-                reads: calculateStats(user, 'read'),
-                quizzes: calculateStats(user, 'quiz')
+                percent: calculateCoursePercent(user),
+                exercises: calculateUsersStats(user, 'practice'),
+                reads: calculateUsersStats(user, 'read'),
+                quizzes: calculateUsersStats(user, 'quiz')
             }
-        }
+        };
         return usersWithStats;
         //console.log(usersWithStats);
     });
@@ -104,10 +94,10 @@ window.computeUsersStats = (users, progress, courses) => {
 };
 
 window.sortUsers = (users, orderBy, orderDirection) => {
-    console.log('Entré a sortUsers!');
-    console.log(users);
-    console.log(orderBy);
-    console.log(orderDirection);
+    /*     console.log('Entré a sortUsers!');
+        console.log(users);
+        console.log(orderBy);
+        console.log(orderDirection); */
     const sortByName = (a, b) => {
         if (a.name > b.name) {
             return 1;
@@ -159,33 +149,29 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     let sortedUsers = users;
     if (orderBy === 'name') {
         sortedUsers = sortedUsers.sort(sortByName);
-    } else if (orderBy === 'percent') {
-        sortedUsers = sortedUsers.sort(sortByPercent);
-    } else if (orderBy === 'exercises') {
-        sortedUsers = sortedUsers.sort(sortByExercises);
-    } else if (orderBy === 'reads') {
-        sortedUsers = sortedUsers.sort(sortByReads);
-    } else if (orderBy === 'quizzes') {
-        sortedUsers = sortedUsers.sort(sortByQuizzes);
-    } else if (orderBy === 'scoreAvg') {
-        sortedUsers = sortedUsers.sort(sortByScoreAvg);
-    };
+    }    
+    sortedUsers = (orderBy === 'percent') ? sortedUsers.sort(sortByPercent) : sortedUsers;
+    sortedUsers = (orderBy === 'exercises') ? sortedUsers.sort(sortByExercises) : sortedUsers;
+    sortedUsers = (orderBy === 'reads') ? sortedUsers.sort(sortByReads) : sortedUsers;
+    sortedUsers = (orderBy === 'quizzes') ? sortedUsers.sort(sortByQuizzes) : sortedUsers;
+    sortedUsers = (orderBy === 'scoreAvg') ? sortedUsers.sort(sortByScoreAvg) : sortedUsers;
     if (orderDirection === 'DESC') {
         sortedUsers = sortedUsers.reverse();
     };
-    console.log(sortedUsers);
+    /*    console.log(sortedUsers); */
     return sortedUsers;
 };
 
-window.filterUsers=(users,search)=>{
+window.filterUsers = (users, search) => {
+/*     console.log('Entré a filterUsers'); */
     let filteredUsers = users.filter(user => user.name.toUpperCase().indexOf(search.toUpperCase()) > -1);
     return filteredUsers;
 };
 
 //Función que retorna un arreglo de usuario con stats ya calculados
 window.processCohortData = (options) => {
-    console.log('Entré a processCohortData!');
-    console.log(options);
+    /*  console.log('Entré a processCohortData!');
+     console.log(options); */
     let courses = Object.keys(options.cohort.coursesIndex);
     let studentWithStats = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses);
     let sortedData = sortUsers(studentWithStats, options.orderBy, options.orderDirection);
