@@ -53,7 +53,8 @@ optionsArr.forEach((element, i) => {
 //Función para mostrar la vista de la opción seleccionada
 const optionSelected = (optionsList) => {
   if (optionsList === 'perfil') {
-    sectionProfile = ` <img src="images/ale.png"> <h1> Alejandra Ramirez </h1>`
+    sectionProfile = ` <img src="images/ale.png"> <h1> Alejandra Ramirez </h1> <br>
+    <h2> Training Manager </h2> <h3> Laboratoria Lima </h3>`
     sectionMain.innerHTML = sectionProfile;
   }
   else if (optionsList === 'cerrar sesión') {

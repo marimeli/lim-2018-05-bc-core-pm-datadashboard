@@ -286,8 +286,8 @@ body.sidebar-active #sidebar {
   border: 1px solid black;
 }
 
- .user-progress {
+ /* .user-progress {
 display: none;
-} 
+}  */
 @media screen and (max-width: 800px) {
 }
