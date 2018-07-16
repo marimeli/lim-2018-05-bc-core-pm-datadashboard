@@ -16,6 +16,7 @@ const ascButton = document.getElementById('sort-button');
 let sectionCohort = document.getElementById('cohort-content');
 let errorCase = null;
 let campusSection = null;
+let campusLima= null;
 let sectionProfile = null;
 
 //Creando objeto options 
@@ -25,8 +26,8 @@ const options = {
     users: null,
     progress: null
   },
-  orderBy: '',
-  orderDirection: '',
+  orderBy: 'name',
+  orderDirection: 'ASC',
   search: ''
 };
 
@@ -167,9 +168,10 @@ const cohortLima = (idCohort, dataCohorts) => {
     //console.log(objCohort); todos los cohorts
     if (objCohort.id === idCohort) {
       options.cohort = objCohort;
+      
     }
     ////No pinta el mensaje de error CORREGIR
-    else {
+    else if (objCohort.id !== idCohort) {
       errorCase = `<h3> PROGRESO DEL COHORT </h3>`
       sectionMain.innerHTML = errorCase;
     }
@@ -237,13 +239,13 @@ selectOrderBy.addEventListener('change', e => {
 
 ascButton.addEventListener('click', e => {
   const direction = ascButton.innerText;
-  if (direction == 'ASCENDENTE') {
+  if (direction == 'ASC') {
     options.orderDirection = 'ASC';
-    ascButton.innerText = 'DESCENDENTE';
+    ascButton.innerText = 'DES';
     
   } else {
     options.orderDirection = 'DESC'
-    ascButton.innerText = 'ASCENDENTE';
+    ascButton.innerText = 'ASC';
   };
   const userOrdered = processCohortData(options);
   progressInTable(userOrdered);

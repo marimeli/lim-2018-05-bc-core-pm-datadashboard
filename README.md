@@ -14,7 +14,7 @@ Durante el segundo sprint plan, se desarrolló un nuevo Product Backlog, en el c
 
 Durante el tercer sprint plan, se definió nuevas tareas épicas en el Product Backlog. Sin embargo, nos encontramos confusas al implementar Javascript. Por ello, nos propusimos leer y practicar los temas del LMS, ver videos relacionados, así como compartir lo entendido con nuestra partner. Pese a nuestros esfuerzos, solo se logró un pequeño avance respecto a la manipulación del DOM. También logramos hacer peticiones asíncronas con Fetch. El desarrollo de las funciones y la creación de eventos con el DOM, la colocamos como "Blocked", ya que nos estancamos en estos puntos, sin lograr nuevos avances.
 
-![sprint planning](src/images/sprint3.jpeg)
+![sprint planning](src/images/sprint3.jpg)
 
 
 Durante esta fase, se respondieron algunas preguntas para poder definir el producto.
@@ -148,4 +148,4 @@ En esta etapa probaremos nuestro prototipo con usuarios para obtener su feedback
 
 ## Implementación del producto
 
-Para la elaboración del producto se utilizaron las siguientes herramientas: HTML 5, CSS, Javascript. Para los test, se emplearemos Node JS. 
+Para la elaboración del producto se utilizaron las siguientes herramientas: HTML 5, CSS, Javascript. Para los test, emplearemos Node JS. 
