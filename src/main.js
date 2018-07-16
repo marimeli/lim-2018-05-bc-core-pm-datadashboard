@@ -136,6 +136,7 @@ const progressInTable = (usersWithStats) => {
   });
   //Corregir posición de la tabla
   usersList.innerHTML = progressTable + '<tbody>' + tbodyContent + '</tbody>';
+  sectionCohort.style.display = 'block';
 };
 
 
