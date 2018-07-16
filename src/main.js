@@ -133,9 +133,20 @@ const progressInTable = (usersWithStats) => {
    </tr>`
   });
   //Corregir posición de la tabla
-  usersList.innerHTML = progressTable + '<tbody>' + tbodyContent + '</tbody>';
+  usersList  = progressTable + '<tbody>' + tbodyContent + '</tbody>';
+  sectionCohort.innerHTML = usersList;
+  sectionCohort.style.display = 'block';
 };
 
+/* const limaProgress = (listCohort) => {
+  if(listCohort === 'lim-2018-03-pre-core-pw' && sectionCohort.style.display === 'none'){
+    sectionCohort.style.display = 'block';
+  }
+  else if (listCohort !== 'lim-2018-03-pre-core-pw' && sectionCohort.style.display === 'block'){
+    sectionCohort.style.display = 'none';
+  }
+};
+listCohort.addEventListener('click', limaProgress); */
 
 //Función para mostrar el progreso de las estudiantes 
 const showProgress = (idCohort, objProgress) => {

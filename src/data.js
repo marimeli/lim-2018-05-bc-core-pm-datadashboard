@@ -1,99 +1,103 @@
 window.computeUsersStats = (users, progress, courses) => {
-    /*     console.log(users);
-        console.log(progress);
-        console.log(courses); */
-    console.log('Entré a computeUsersStats!');
-    //Filtrar para validar que todos los usuarios sean estudiantes. 
+    //Filtrar para validar que todos los usuarios sean estudiantes.
     let students = users.filter(user => user.role === 'student');
+    //console.log(students);
 
     //Función para calcular el porcentaje de completitud de cada curso del usuario.
-    const calculatePercent = (user => {
+    const calculateCoursePercent = (user) => {
         let percent = 0;
         courses.forEach(course => {
             const userProgress = progress[user.id];
-            if (userProgress.hasOwnProperty(course)) {
-                percent += userProgress[course].percent;
-            };
+            (userProgress.hasOwnProperty(course)) ? percent += userProgress[course].percent : percent = 0;
         });
-        return Math.round(percent / courses.length);
-    });
+        return percent / courses.length;
+    };
 
     //Función para calcular el progreso de cada usuario.
-    const calculateStats = ((user, type) => {
+    const calculateUsersStats = (user, type) => {
         let total = 0;
         let completed = 0;
         let scoreSum = 0;
         let scoreAvg = 0;
-        courses.forEach(course => {
+        courses.forEach((course) => {
             const userProgress = progress[user.id];
             if (userProgress.hasOwnProperty(course)) {
                 const units = Object.values(userProgress[course].units);
                 units.forEach(unit => {
                     const parts = Object.values(unit.parts);
                     switch (type) {
-                        case 'practice':
-                            const exercises = parts.filter(part => part.type === 'practice' && part.hasOwnProperty('exercises'));
-                            exercises.forEach((exercise, i) => {
-                                total += Object.keys(exercises[i].exercises).length;
-                                Object.values(exercise.exercises).forEach(exercise => {
-                                    completed += exercise.completed;
-                                });
-                            });
+                        case 'practice': //Para evaluar todos los ejercicios que sean de tipo practica
+                            const myExercises = parts.filter(part => part.type === 'practice' && part.hasOwnProperty('exercises'));
+                            myExercises.forEach(objExercise => completed += objExercise.completed);
+                            total += myExercises.length;
                             break;
+                        //Para determinar todas las lecturas completadas
                         case 'read':
                             const reads = parts.filter(part => part.type === 'read');
-                            const readsDone = parts.filter(part => part.type === 'read' && part.completed === 1);
+                            reads.forEach(objRead => completed += objRead.completed);
                             total += reads.length;
-                            completed += readsDone.length;
                             break;
+                        //Para sabes la puntuación promedio de las evaluaciones
                         case 'quiz':
                             const quizzes = parts.filter(part => part.type === 'quiz');
-                            const quizzesDone = parts.filter(part => part.type === 'quiz' && part.completed === 1);
-                            quizzesDone.forEach(quiz => {
-                                scoreSum += quiz.score;
+                            quizzes.forEach((objQuiz) => {
+                                completed += objQuiz.completed;
+                                if (objQuiz.hasOwnProperty('score')) {
+                                    scoreSum += objQuiz.score;
+                                } else {
+                                    scoreSum += 0;
+                                }
                             });
                             total += quizzes.length;
-                            completed += quizzesDone.length;
                             break;
-                    };
+                    }
                 });
-            };
+            }
         });
-        let results = {
-            total: total,
-            completed: completed,
-            percent: Math.round(completed * 100 / total)
-        };
+        //Almacenando los resultados del progreso de cada usuario
+        let results = {};
+        if (completed !== 0) {
+            results.total = total;
+            results.completed = completed;
+            results.percent = Math.round(completed * 100 / total);
+        } else {
+            results.completed = 0;
+            results.percent = 0;
+        }
         if (type === 'quiz') {
-            results.scoreSum = scoreSum;
-            results.scoreAvg = Math.round(scoreSum / total);
+            if (completed !== 0) {
+                results.scoreSum = scoreSum;
+                results.scoreAvg = Math.round(scoreSum / completed);
+            } else {
+                results.scoreAvg = 0;
+            }
         }
         return results;
-    });
+    };
 
-    //Método map para recorrer array de objetos y obtener un nuevo array
+    //Asignando stats y nombre a los usuarios filtrados
     students = students.map(user => {
-        const userWithStats = {
+        let usersWithStats = {
             name: user.name,
             stats: {
-                percent: calculatePercent(user),
-                exercises: calculateStats(user, 'practice'),
-                reads: calculateStats(user, 'read'),
-                quizzes: calculateStats(user, 'quiz')
+                percent: calculateCoursePercent(user),
+                exercises: calculateUsersStats(user, 'practice'),
+                reads: calculateUsersStats(user, 'read'),
+                quizzes: calculateUsersStats(user, 'quiz')
             }
         };
-        return userWithStats
+        return usersWithStats;
+        //console.log(usersWithStats);
     });
-    console.log(students);
-    return students; //array de 727 students
-
+    return students;
+    //console.log(students);
 };
 
 window.sortUsers = (users, orderBy, orderDirection) => {
-    console.log('Entré a sortUsers!');
-    console.log(users);
-    console.log(orderBy);
-    console.log(orderDirection);
+    /*     console.log('Entré a sortUsers!');
+        console.log(users);
+        console.log(orderBy);
+        console.log(orderDirection); */
     const sortByName = (a, b) => {
         if (a.name > b.name) {
             return 1;
@@ -145,48 +149,33 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     let sortedUsers = users;
     if (orderBy === 'name') {
         sortedUsers = sortedUsers.sort(sortByName);
-    } else if (orderBy === 'percent') {
-        sortedUsers = sortedUsers.sort(sortByPercent);
-    } else if (orderBy === 'exercises') {
-        sortedUsers = sortedUsers.sort(sortByExercises);
-    } else if (orderBy === 'reads') {
-        sortedUsers = sortedUsers.sort(sortByReads);
-    } else if (orderBy === 'quizzes') {
-        sortedUsers = sortedUsers.sort(sortByQuizzes);
-    } else if (orderBy === 'scoreAvg') {
-        sortedUsers = sortedUsers.sort(sortByScoreAvg);
-    };
+    }    
+    sortedUsers = (orderBy === 'percent') ? sortedUsers.sort(sortByPercent) : sortedUsers;
+    sortedUsers = (orderBy === 'exercises') ? sortedUsers.sort(sortByExercises) : sortedUsers;
+    sortedUsers = (orderBy === 'reads') ? sortedUsers.sort(sortByReads) : sortedUsers;
+    sortedUsers = (orderBy === 'quizzes') ? sortedUsers.sort(sortByQuizzes) : sortedUsers;
+    sortedUsers = (orderBy === 'scoreAvg') ? sortedUsers.sort(sortByScoreAvg) : sortedUsers;
     if (orderDirection === 'DESC') {
         sortedUsers = sortedUsers.reverse();
     };
-    console.log(sortedUsers);
+    /*    console.log(sortedUsers); */
     return sortedUsers;
 };
 
 window.filterUsers = (users, search) => {
-    console.log('Entré a filterUsers!');
-/*     console.log(users);
-    console.log(search); */
-    let filteredUsers;
-
-    if (search === '') {
-        filteredUsers = users;
-    } else {
-        filteredUsers = users.filter(user =>
-            (user.name.includes(search.toLowerCase()))
-        );
-    }
-   /*  console.log(filteredUsers); */
+/*     console.log('Entré a filterUsers'); */
+    let filteredUsers = users.filter(user => user.name.toUpperCase().indexOf(search.toUpperCase()) > -1);
     return filteredUsers;
 };
+
 //Función que retorna un arreglo de usuario con stats ya calculados
 window.processCohortData = (options) => {
-    console.log('Entré a processCohortData!');
-    console.log(options);
+    /*  console.log('Entré a processCohortData!');
+     console.log(options); */
     let courses = Object.keys(options.cohort.coursesIndex);
     let studentWithStats = computeUsersStats(options.cohortData.users, options.cohortData.progress, courses);
     let sortedData = sortUsers(studentWithStats, options.orderBy, options.orderDirection);
     let filterData = filterUsers(sortedData, options.search);
-    console.log(filterData);
+    //console.log(filterData);
     return filterData;
 };
